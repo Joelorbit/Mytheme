@@ -1,7 +1,7 @@
 <script lang="ts">
   import Icon from '../primitives/Icon.svelte';
 
-  let { label = 'eyu' }: { label?: string } = $props();
+  let { label = 'E+' }: { label?: string } = $props();
 </script>
 
 <span class="brandmark" aria-label={label}>
