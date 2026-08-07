@@ -1,0 +1,214 @@
+/* ============================================================================
+   EYÜ DESIGN SYSTEM — TOKEN CONTRACT
+   ----------------------------------------------------------------------------
+   Single source of truth. Every value in the UI resolves here.
+   Never hardcode color, spacing, radius, shadow, type or duration elsewhere.
+
+   Architecture:
+     1. NEUTRAL RAMP  -- the monochrome core (premium black & white, no pure #000/#FFF)
+     2. ROLES         -- semantic mapping (bg/surface/ink/line/...) per mode
+     3. ENERGY        -- one accent (violet) + one complement (teal), statuses
+     4. TYPE SYSTEM   -- display / heading / body / caption / mono scales
+     5. SPACE         -- 8pt grid
+     6. RADIUS / SHADOW / MOTION / Z -- control tokens
+     7. TEXTURE       -- painted wall, patterns (identity)
+
+   Dark is the default mode. Light is a first-class citizen, never an afterthought.
+   ============================================================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* ============ 1. NEUTRAL RAMP (monochrome core) ============
+     L steps chosen for perceptible-but-subtle hierarchy.
+     Tiny warm-earring (oklch 60) keeps paper feel; chroma ~0 so it reads neutral.
+     Dark basis: matte charcoal #222626 — never pure black, never flat gray. */
+  --n-40: oklch(0.9885 0.0018 60);   /* light elevated · ~#FCFCFB */
+  --n-50: oklch(0.978 0.0018 60);    /* light bg · ~#FAFAF8  */
+  --n-100: oklch(0.9645 0.002 60);   /* light pressed · ~#F6F6F4 */
+  --n-200: oklch(0.935 0.002 60);    /* ~#E9EAE4        */
+  --n-300: oklch(0.875 0.002 60);
+  --n-400: oklch(0.795 0.002 60);
+  --n-500: oklch(0.7 0.002 60);
+  --n-600: oklch(0.585 0.002 60);
+  --n-700: oklch(0.47 0.002 60);
+  --n-800: oklch(0.205 0.0024 60);   /* elevated · ~#29 2E 2E    */
+  --n-850: oklch(0.18 0.0024 60);    /* surface · ~#26 2B 2B     */
+  --n-900: oklch(0.155 0.0024 60);   /* bg · ~#22 26 26          */
+  --n-950: oklch(0.13 0.0022 60);    /* pressed · ~#1F 23 23     */
+  --n-1000: oklch(0.10 0.002 60);    /* deepest, reserved        */
+
+  /* ============ 2. ROLES — DARK (default) ============ */
+  --bg: var(--n-900);               /* matte charcoal base #NN26 */
+  --surface: var(--n-850);          /* cards, panels          */
+  --surface-elevated: var(--n-800); /* menus, dialogs, hover  */
+  --surface-pressed: var(--n-950);  /* active states          */
+  --ink: var(--n-50);             /* primary text, near-white     */
+  --ink-inverse: var(--n-1000);   /* text on --ink                */
+
+  --text-primary: var(--ink);
+  --text-secondary: color-mix(in srgb, var(--ink) 68%, transparent);
+  --text-muted: color-mix(in srgb, var(--ink) 48%, transparent);
+  --text-faint: color-mix(in srgb, var(--ink) 16%, transparent);
+  --text-disabled: color-mix(in srgb, var(--ink) 30%, transparent);
+
+  --line: color-mix(in srgb, var(--ink) 14%, transparent);      /* borders     */
+  --line-strong: color-mix(in srgb, var(--ink) 26%, transparent); /* strong     */
+  --line-soft: color-mix(in srgb, var(--ink) 6%, transparent);  /* dividers    */
+  --card-border: color-mix(in srgb, var(--ink) 9%, transparent);
+
+  --surface-hover: color-mix(in srgb, var(--ink) 5%, transparent);
+  --surface-active: color-mix(in srgb, var(--ink) 9%, transparent);
+  --disabled-bg: color-mix(in srgb, var(--ink) 5%, transparent);
+
+  --overlay: color-mix(in srgb, var(--bg) 80%, transparent);
+  --glow: color-mix(in srgb, var(--ink) 5%, transparent);
+
+  /* ============ 3. ENERGY + STATUS ============ */
+  --accent: oklch(0.64 0.19 285);
+  --accent-strong: oklch(0.7 0.17 285);
+  --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
+  --on-accent: var(--n-1000);
+  --ring: color-mix(in srgb, var(--accent) 55%, transparent);
+
+  --complement: oklch(0.68 0.09 190);
+  --complement-soft: color-mix(in srgb, var(--complement) 10%, transparent);
+
+  --success: oklch(0.68 0.1 150);
+  --warning: oklch(0.76 0.1 80);
+  --danger: oklch(0.66 0.13 20);
+  --danger-soft: color-mix(in srgb, var(--danger) 14%, transparent);
+
+  /* ============ 4. TYPE SYSTEM ============ */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Geist', 'Inter', Arial, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --display-lg: 7.5rem;
+  --display-md: 5rem;
+  --display-sm: 3.5rem;
+  --heading-lg: 2.5rem;
+  --heading-md: 2rem;
+  --heading-sm: 1.5rem;
+  --body-lg: 1.125rem;
+  --body-md: 1rem;
+  --body-sm: 0.875rem;
+  --body-xs: 0.8125rem;
+  --caption: 0.75rem;
+  --mono-md: 0.875rem;
+  --mono-sm: 0.75rem;
+  --mono-xs: 0.6875rem;
+
+  /* rhythm (leading + tracking) lives with the scale */
+  --lh-display: 1.02;
+  --lh-heading: 1.14;
+  --lh-body: 1.6;
+  --lh-caption: 1.4;
+  --lh-mono: 1.5;
+
+  --tracking-display: -0.032em;
+  --tracking-heading: -0.02em;
+  --tracking-body: -0.011em;
+  --tracking-caption: 0.1em;
+  --tracking-mono: 0;
+
+  /* ============ 5. SPACE — 8pt grid ============ */
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4px  */
+  --space-2: 0.5rem;    /* 8px  */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
+  --space-7: 2.5rem;    /* 40px */
+  --space-8: 3rem;      /* 48px */
+  --space-9: 4rem;      /* 64px */
+  --space-10: 5rem;     /* 80px */
+  --space-11: 6rem;     /* 96px */
+  --space-12: 8rem;     /* 128px */
+
+  /* ============ 6. RADIUS / SHADOW / MOTION / Z ============ */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 999px;
+
+  --shadow-1: 0 1px 2px var(--glow), 0 2px 8px var(--glow);
+  --shadow-2: 0 4px 16px var(--glow), 0 12px 40px var(--glow);
+  --shadow-3: 0 8px 24px var(--glow), 0 32px 96px var(--glow);
+
+  --dur-1: 100ms;
+  --dur-2: 160ms;
+  --dur-3: 240ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --z-raised: 100;
+  --z-nav: 200;
+  --z-overlay: 300;
+  --z-grain: 9999;
+
+  /* ============ 7. TEXTURE — premium surface ============ */
+  --container: 1600px;
+
+  /* film grain — the ONLY texture. Seamless, monochrome, 1px-scale turbulence.
+     Blend + opacity applied per mode; size stays identical everywhere. */
+  --grain-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
+  --grain-size: 200px;
+  --grain-opacity: 0.03;   /* dark: 3% — barely there */
+  --grain-blend: overlay;  /* overlay/soft-light keep luminance */
+
+  /* ---- pattern library (opt-in, off by default; banned on page bg) ---- */
+  --plus-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M14 8v12M8 14h12' fill='none' stroke='%23e6e9f5' stroke-opacity='0.03' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E");
+  --plus-size: 28px;
+}
+
+/* ============================================================================
+   LIGHT MODE — the same ramp, roles re-mapped. Nothing else changes.
+   ============================================================================ */
+[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: var(--n-50);            /* warm ivory · ~#FAFAF8  */
+  --surface: var(--n-40);       /* softer paper · ~#FCFCFB */
+  --surface-elevated: var(--n-40);
+  --surface-pressed: var(--n-100); /* ~#F6F6F4 */
+  --ink: var(--n-950);
+  --ink-inverse: var(--n-50);
+
+  --text-secondary: color-mix(in srgb, var(--ink) 70%, transparent);
+  --text-muted: color-mix(in srgb, var(--ink) 50%, transparent);
+  --text-faint: color-mix(in srgb, var(--ink) 18%, transparent);
+  --text-disabled: color-mix(in srgb, var(--ink) 32%, transparent);
+
+  --line: color-mix(in srgb, var(--ink) 14%, transparent);
+  --line-strong: color-mix(in srgb, var(--ink) 26%, transparent);
+  --line-soft: color-mix(in srgb, var(--ink) 7%, transparent);
+  --card-border: color-mix(in srgb, var(--ink) 10%, transparent);
+
+  --surface-hover: color-mix(in srgb, var(--ink) 4%, transparent);
+  --surface-active: color-mix(in srgb, var(--ink) 8%, transparent);
+  --disabled-bg: color-mix(in srgb, var(--ink) 5%, transparent);
+
+  --overlay: color-mix(in srgb, var(--bg) 82%, transparent);
+  --glow: color-mix(in srgb, var(--ink) 6%, transparent);
+
+  --accent: oklch(0.52 0.2 285);
+  --accent-strong: oklch(0.45 0.22 285);
+  --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
+  --on-accent: var(--n-50);
+  --ring: color-mix(in srgb, var(--accent) 45%, transparent);
+
+  --complement: oklch(0.58 0.09 190);
+  --complement-soft: color-mix(in srgb, var(--complement) 8%, transparent);
+
+  --success: oklch(0.6 0.11 150);
+  --warning: oklch(0.68 0.11 80);
+  --danger: oklch(0.58 0.16 20);
+  --danger-soft: color-mix(in srgb, var(--danger) 10%, transparent);
+
+  --grain-opacity: 0.015;  /* light: 1.5% — nearly invisible ivory */
+
+  --plus-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M14 8v12M8 14h12' fill='none' stroke='%23151518' stroke-opacity='0.035' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E");
+}

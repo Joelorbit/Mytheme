@@ -1,0 +1,239 @@
+/* ============================================================================
+   EYÜ DESIGN SYSTEM — BASE
+   Global styles + utility classes. Token contract lives in tokens.css.
+   ============================================================================ */
+
+/* ---------- premium surface backdrop ----------
+   One matte base + one barely-visible film grain. No patterns, no gradients.
+   Grain is a seamless monochrome turbulence tile, blended in overlay mode.
+   Opacity per mode: dark 3% · light 1.5%. Throttled by device class. */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--body-md);
+  font-optical-sizing: auto;
+  font-feature-settings: 'cv11', 'ss01';
+  letter-spacing: var(--tracking-body);
+  line-height: var(--lh-body);
+}
+
+/* fixed turbulence ref for the grain overlay on body::before */
+.grain-svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-grain);
+  pointer-events: none;
+  background-image: var(--grain-pattern);
+  background-size: var(--grain-size) var(--grain-size);
+  mix-blend-mode: var(--grain-blend);
+  content: '';
+  opacity: var(--grain-opacity);
+}
+
+/* desktop = 100% · tablet = 80% · mobile = 60% texture strength */
+@media (max-width: 1024px) and (min-width: 601px) {
+  body::before {
+    opacity: calc(var(--grain-opacity) * 0.8);
+  }
+}
+
+@media (max-width: 600px) {
+  body::before {
+    opacity: calc(var(--grain-opacity) * 0.6);
+  }
+}
+
+/* ---------- reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+/* ---------- type system utilities ---------- */
+/* display — Fraunces. --hero opens the optical-size axis for giant sizes. */
+.display {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-display);
+  line-height: var(--lh-display);
+  font-weight: 400;
+}
+
+.display--hero {
+  font-variation-settings: 'SOFT' 60, 'WONK' 0, 'opsz' 144;
+  line-height: 0.98;
+  letter-spacing: var(--tracking-display);
+}
+
+.display--emphasis {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.display-lg { font-size: var(--display-lg); }
+.display-md { font-size: var(--display-md); }
+.display-sm { font-size: var(--display-sm); }
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 450;
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--lh-heading);
+}
+
+.heading-lg { font-size: var(--heading-lg); }
+.heading-md { font-size: var(--heading-md); }
+.heading-sm { font-size: var(--heading-sm); }
+
+.body-lg { font-size: var(--body-lg); }
+.body-md { font-size: var(--body-md); }
+.body-sm { font-size: var(--body-sm); }
+.body-xs { font-size: var(--body-xs); }
+
+/* caption: mono micro-labels, engineered to sit anywhere */
+.caption {
+  font-family: var(--font-mono);
+  font-size: var(--caption);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  letter-spacing: var(--tracking-caption);
+  line-height: var(--lh-caption);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.mono-md { font-family: var(--font-mono); font-size: var(--mono-md); line-height: var(--lh-mono); }
+.mono-sm { font-family: var(--font-mono); font-size: var(--mono-sm); line-height: var(--lh-mono); }
+.mono-xs { font-family: var(--font-mono); font-size: var(--mono-xs); line-height: var(--lh-mono); }
+
+/* ---------- surface utilities ---------- */
+.surface { background: var(--surface); }
+.surface-elevated { background: var(--surface-elevated); }
+
+.shadow-1 { box-shadow: var(--shadow-1); }
+.shadow-2 { box-shadow: var(--shadow-2); }
+.shadow-3 { box-shadow: var(--shadow-3); }
+
+/* ---------- pattern library ----------
+   Opt-in accent surfaces. NOT applied to page background by default —
+   use sparingly on decorative containers only. */
+.pattern-plus {
+  background-color: var(--bg);
+  background-image: var(--plus-pattern);
+  background-size: var(--plus-size) var(--plus-size);
+  background-repeat: repeat;
+}
+
+.pattern-grid {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(to right, var(--line-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line-soft) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.pattern-dots {
+  background-color: var(--bg);
+  background-image: radial-gradient(circle, var(--line-soft) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+}
+
+.pattern-grain {
+  background-image: var(--grain-pattern);
+  background-size: var(--grain-size) var(--grain-size);
+  background-repeat: repeat;
+}
+
+/* ---------- layout ---------- */
+.shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container);
+  padding-inline: var(--space-4);
+}
+
+@media (min-width: 720px) {
+  .shell {
+    padding-inline: var(--space-6);
+  }
+}
+
+@media (min-width: 1200px) {
+  .shell {
+    padding-inline: var(--space-9);
+  }
+}
+
+/* ---------- motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
