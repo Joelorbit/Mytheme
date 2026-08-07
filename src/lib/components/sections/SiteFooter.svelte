@@ -6,10 +6,10 @@
   <span class="caption">© 2026 EyuTaste</span>
   <span class="caption foot__tag">own taste, own tools</span>
   <span class="foot__links">
-    <a href="https://github.com" target="_blank" rel="noreferrer" class="foot__link" aria-label="GitHub">
+    <a href="https://github.com/Joelorbit/Mytheme" target="_blank" rel="noreferrer" class="foot__link" aria-label="GitHub">
       <Icon name="share" size={17} strokeWidth={1.6} />
     </a>
-    <a href="mailto:hello@eyutaste.dev" class="foot__link" aria-label="Email">
+    <a href="mailto:abitieyuel@gmail.com" class="foot__link" aria-label="Email">
       <Icon name="send" size={17} strokeWidth={1.6} />
     </a>
   </span>
