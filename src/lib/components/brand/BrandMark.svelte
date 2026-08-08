@@ -29,6 +29,6 @@
     position: absolute;
     top: -6px;
     right: -10px;
-    color: var(--text-primary);
+    color: var(--accent);
   }
 </style>

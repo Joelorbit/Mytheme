@@ -1,17 +1,18 @@
 /* ============================================================================
-   EYUTHEME DESIGN SYSTEM — TOKEN CONTRACT v3
+   EYUTHEME DESIGN SYSTEM — TOKEN CONTRACT v4
    ----------------------------------------------------------------------------
-   Cool blue-gray monochrome. No accent colors. Pure neutral hierarchy.
+   Identity: darker complementary palette + film grain texture.
    Plus Jakarta Sans + JetBrains Mono. 1.333x modular type scale.
-   Ultra-fine noise texture. TailwindCSS hybrid.
+   Cool blue-gray base, deep indigo accent, warm amber complement.
 
    Architecture:
-     1. NEUTRAL RAMP  -- cool blue-gray monochrome (skit palette, oklch)
-     2. ROLES         -- semantic mapping per mode
-     3. TYPE SYSTEM   -- 1.333x modular scale, Plus Jakarta Sans
-     4. SPACE         -- 8pt grid
-     5. RADIUS / SHADOW / MOTION / Z
-     6. TEXTURE       -- ultra-fine noise
+     1. NEUTRAL RAMP  -- cool blue-gray monochrome core
+     2. SURFACE STACK -- 5 layers of depth (bg → elevated → overlay)
+     3. ENERGY        -- deep indigo accent + warm amber complement
+     4. TYPE SYSTEM   -- 1.333x modular scale, Plus Jakarta Sans
+     5. SPACE         -- 8pt grid
+     6. RADIUS / SHADOW / MOTION / Z
+     7. TEXTURE       -- film grain (skit-inspired, 3%)
 
    Dark is the default mode.
    ============================================================================ */
@@ -33,17 +34,17 @@
   --color-popover: var(--surface-elevated);
   --color-popover-foreground: var(--ink);
 
-  --color-primary: var(--ink);
-  --color-primary-foreground: var(--ink-inverse);
+  --color-primary: var(--accent);
+  --color-primary-foreground: var(--on-accent);
 
-  --color-secondary: var(--surface);
-  --color-secondary-foreground: var(--text-primary);
+  --color-secondary: var(--complement);
+  --color-secondary-foreground: var(--on-complement);
 
   --color-muted: var(--surface);
   --color-muted-foreground: var(--text-muted);
 
-  --color-accent: var(--surface-hover);
-  --color-accent-foreground: var(--text-primary);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--on-accent);
 
   --color-destructive: var(--danger);
   --color-destructive-foreground: var(--ink-inverse);
@@ -56,6 +57,9 @@
   --color-warning: var(--warning);
   --color-danger: var(--danger);
 
+  --color-accent-soft: var(--accent-soft);
+  --color-complement-soft: var(--complement-soft);
+
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -65,7 +69,7 @@
   color-scheme: dark;
   --radius: 0.425rem;
 
-  /* ============ 1. NEUTRAL RAMP — cool blue-gray (skit palette) ============ */
+  /* ============ 1. NEUTRAL RAMP — cool blue-gray ============ */
   --n-50: oklch(0.9543 0.0094 171.80);
   --n-100: oklch(0.8892 0.0199 172.73);
   --n-200: oklch(0.7913 0.0185 169.94);
@@ -79,11 +83,14 @@
   --n-950: oklch(0.1920 0.0051 173.79);
   --n-1000: oklch(0.1563 0.0039 164.47);
 
-  /* ============ 2. ROLES — DARK (default) ============ */
-  --bg: var(--n-900);
-  --surface: var(--n-800);
-  --surface-elevated: var(--n-700);
-  --surface-pressed: var(--n-950);
+  /* ============ 2. SURFACE STACK — 5 layers of depth ============ */
+  --bg: var(--n-900);                   /* base canvas */
+  --surface: var(--n-800);              /* cards, panels */
+  --surface-elevated: var(--n-700);     /* menus, dialogs, hover */
+  --surface-raised: var(--n-600);       /* modals, popovers */
+  --surface-pressed: var(--n-950);      /* active/pressed states */
+  --surface-inset: var(--n-950);        /* inputs, text areas */
+
   --ink: var(--n-50);
   --ink-inverse: var(--n-1000);
 
@@ -105,33 +112,32 @@
   --overlay: color-mix(in srgb, var(--bg) 80%, transparent);
   --glow: color-mix(in srgb, var(--ink) 5%, transparent);
 
-  /* ============ 3. STATUS (subtle, monochrome-friendly) ============ */
-  --success: oklch(0.68 0.06 160);
-  --warning: oklch(0.76 0.06 85);
-  --danger: oklch(0.66 0.10 25);
+  /* ============ 3. ENERGY — deep indigo accent + warm amber complement ============ */
+  /* Indigo: deep, moody, premium. Hue 280 — purple-indigo territory. */
+  --accent: oklch(0.55 0.14 280);
+  --accent-strong: oklch(0.62 0.12 280);
+  --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
+  --on-accent: oklch(0.97 0.005 280);
+
+  /* Amber: warm complement. Hue 70 — gold-amber. Dark enough to feel premium. */
+  --complement: oklch(0.62 0.11 70);
+  --complement-strong: oklch(0.68 0.09 70);
+  --complement-soft: color-mix(in srgb, var(--complement) 10%, transparent);
+  --on-complement: oklch(0.15 0.01 70);
+
+  --ring: color-mix(in srgb, var(--accent) 50%, transparent);
+
+  /* ============ 4. STATUS ============ */
+  --success: oklch(0.62 0.09 155);
+  --warning: oklch(0.72 0.09 82);
+  --danger: oklch(0.62 0.12 22);
   --danger-soft: color-mix(in srgb, var(--danger) 14%, transparent);
 
-  --ring: color-mix(in srgb, var(--ink) 40%, transparent);
-
-  /* ============ 4. TYPE SYSTEM — 1.333x modular scale ============ */
+  /* ============ 5. TYPE SYSTEM — 1.333x modular scale ============ */
   --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* 1.333x ratio (perfect fourth) */
-  --text-xs: 0.75rem;      /* 12px */
-  --text-sm: 0.833rem;     /* ~13.3px */
-  --text-base: 1rem;       /* 16px — anchor */
-  --text-lg: 1.125rem;     /* 18px */
-  --text-xl: 1.333rem;     /* ~21.3px */
-  --text-2xl: 1.777rem;    /* ~28.4px */
-  --text-3xl: 2.369rem;    /* ~37.9px */
-  --text-4xl: 3.157rem;    /* ~50.5px */
-  --text-5xl: 4.209rem;    /* ~67.3px */
-  --text-6xl: 5.61rem;     /* ~89.8px */
-  --text-7xl: 7.478rem;    /* ~119.6px */
-
-  /* display sizes (large hero context) */
   --display-lg: 7.478rem;
   --display-md: 5.61rem;
   --display-sm: 4.209rem;
@@ -147,7 +153,6 @@
   --mono-sm: 0.75rem;
   --mono-xs: 0.694rem;
 
-  /* rhythm */
   --lh-display: 1.05;
   --lh-heading: 1.18;
   --lh-body: 1.6;
@@ -160,7 +165,7 @@
   --tracking-caption: 0.08em;
   --tracking-mono: 0;
 
-  /* ============ 5. SPACE — 8pt grid ============ */
+  /* ============ 6. SPACE — 8pt grid ============ */
   --space-0: 0;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -175,7 +180,7 @@
   --space-11: 6rem;
   --space-12: 8rem;
 
-  /* ============ 6. RADIUS / SHADOW / MOTION / Z ============ */
+  /* ============ 7. RADIUS / SHADOW / MOTION / Z ============ */
   --radius-xs: 2px;
   --radius-sm: 4px;
   --radius-md: 6px;
@@ -185,6 +190,10 @@
   --shadow-1: 0 1px 2px var(--glow), 0 2px 8px var(--glow);
   --shadow-2: 0 4px 16px var(--glow), 0 12px 40px var(--glow);
   --shadow-3: 0 8px 24px var(--glow), 0 32px 96px var(--glow);
+
+  /* Accent shadows — for interactive/branded elements */
+  --shadow-accent: 0 0 0 1px var(--accent-soft), 0 4px 16px color-mix(in srgb, var(--accent) 20%, transparent);
+  --shadow-complement: 0 0 0 1px var(--complement-soft), 0 4px 16px color-mix(in srgb, var(--complement) 15%, transparent);
 
   --dur-1: 100ms;
   --dur-2: 160ms;
@@ -197,13 +206,11 @@
   --z-overlay: 300;
   --z-grain: 9999;
 
-  /* ============ 7. TEXTURE — ultra-fine noise ============ */
+  /* ============ 8. TEXTURE — film grain (skit-inspired) ============ */
   --container: 1600px;
 
-  /* Ultra-fine noise: higher frequency, lower opacity. Barely perceptible. */
-  --grain-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' seed='42' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
-  --grain-size: 300px;
-  --grain-opacity: 0.018;
+  --grain-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.69' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
+  --grain-opacity: 0.03;
   --grain-blend: overlay;
 
   /* ---- pattern library (opt-in) ---- */
@@ -234,7 +241,9 @@
   --bg: var(--n-50);
   --surface: var(--n-100);
   --surface-elevated: var(--n-50);
+  --surface-raised: var(--n-50);
   --surface-pressed: var(--n-200);
+  --surface-inset: var(--n-200);
   --ink: var(--n-900);
   --ink-inverse: var(--n-50);
 
@@ -255,14 +264,25 @@
   --overlay: color-mix(in srgb, var(--bg) 82%, transparent);
   --glow: color-mix(in srgb, var(--ink) 6%, transparent);
 
-  --ring: color-mix(in srgb, var(--ink) 35%, transparent);
+  /* Accent shifts lighter in light mode */
+  --accent: oklch(0.48 0.16 280);
+  --accent-strong: oklch(0.42 0.18 280);
+  --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
+  --on-accent: oklch(0.98 0.003 280);
 
-  --success: oklch(0.55 0.08 160);
-  --warning: oklch(0.65 0.08 85);
-  --danger: oklch(0.55 0.12 25);
+  --complement: oklch(0.55 0.12 70);
+  --complement-strong: oklch(0.50 0.14 70);
+  --complement-soft: color-mix(in srgb, var(--complement) 8%, transparent);
+  --on-complement: oklch(0.15 0.01 70);
+
+  --ring: color-mix(in srgb, var(--accent) 40%, transparent);
+
+  --success: oklch(0.52 0.10 155);
+  --warning: oklch(0.62 0.10 82);
+  --danger: oklch(0.52 0.14 22);
   --danger-soft: color-mix(in srgb, var(--danger) 10%, transparent);
 
-  --grain-opacity: 0.012;
+  --grain-opacity: 0.02;
 
   --plus-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M14 8v12M8 14h12' fill='none' stroke='%231a1e2e' stroke-opacity='0.04' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
 }

@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
 
-  type Tone = 'neutral' | 'subtle' | 'danger';
+  type Tone = 'neutral' | 'accent' | 'complement' | 'danger';
 
   let {
     tone = 'neutral',
@@ -34,10 +34,16 @@
     color: var(--text-secondary);
   }
 
-  .badge--subtle {
-    background: var(--surface);
-    border-color: var(--line);
-    color: var(--text-muted);
+  .badge--accent {
+    background: var(--accent-soft);
+    border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+    color: var(--accent-strong);
+  }
+
+  .badge--complement {
+    background: var(--complement-soft);
+    border-color: color-mix(in srgb, var(--complement) 30%, transparent);
+    color: var(--complement);
   }
 
   .badge--danger {

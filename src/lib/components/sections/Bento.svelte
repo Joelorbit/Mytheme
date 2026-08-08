@@ -59,16 +59,16 @@
     <article id="tokens" class="tile tile--wall">
       <span class="tile__idx mono-xs">05</span>
       <span class="tile__icon"><Icon name="frame" size={20} strokeWidth={1.5} /></span>
-      <h3 class="heading heading-sm tile__title">Ultra-fine surface</h3>
+      <h3 class="heading heading-sm tile__title">Film grain texture</h3>
       <p class="body-sm tile__copy">
-        Barely perceptible noise texture. The page breathes, not shouts.
+        Skit-inspired turbulence grain. The page breathes, not shouts.
       </p>
       <div class="tile__patterns">
         <span class="tile__pattern pattern-dots"></span>
         <span class="tile__pattern pattern-plus"></span>
         <span class="tile__pattern pattern-grid"></span>
       </div>
-      <div class="tile__foot mono-xs">.. ++ ## · noise 1.8%</div>
+      <div class="tile__foot mono-xs">.. ++ ## · grain 3%</div>
     </article>
   </div>
 </section>
@@ -79,7 +79,7 @@
   }
 
   .bento__label {
-    color: var(--text-muted);
+    color: var(--accent);
   }
 
   .bento__head {
@@ -119,26 +119,11 @@
     box-shadow: var(--shadow-2);
   }
 
-  .tile--tokens {
-    grid-area: tokens;
-  }
-
-  .tile--type {
-    grid-area: type;
-  }
-
-  .tile--motion {
-    grid-area: motion;
-  }
-
-  .tile--icons {
-    grid-area: icons;
-    min-height: 320px;
-  }
-
-  .tile--wall {
-    grid-area: wall;
-  }
+  .tile--tokens { grid-area: tokens; }
+  .tile--type { grid-area: type; }
+  .tile--motion { grid-area: motion; }
+  .tile--icons { grid-area: icons; min-height: 320px; }
+  .tile--wall { grid-area: wall; }
 
   .tile__patterns {
     display: grid;
@@ -160,9 +145,7 @@
     border-color: var(--line-strong);
   }
 
-  .tile__idx {
-    color: var(--text-faint);
-  }
+  .tile__idx { color: var(--text-faint); }
 
   .tile__head {
     display: flex;
@@ -170,9 +153,7 @@
     justify-content: space-between;
   }
 
-  .tile__count {
-    color: var(--text-faint);
-  }
+  .tile__count { color: var(--text-faint); }
 
   .tile__icon {
     display: grid;
@@ -181,12 +162,12 @@
     margin-top: var(--space-6);
     place-items: center;
     border-radius: var(--radius-md);
-    background: var(--surface-hover);
-    color: var(--text-primary);
+    background: var(--accent-soft);
+    color: var(--accent);
   }
 
   .tile__icon--spin :global(svg) {
-    animation: spin 2.4s var(--ease-emphasis) infinite;
+    animation: pulse 2.4s var(--ease-emphasis) infinite;
   }
 
   .tile__title {
@@ -226,24 +207,18 @@
   }
 
   .tile__glyph:hover {
-    color: var(--text-primary);
+    color: var(--accent);
   }
 
   @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-6px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
   }
 
-  @keyframes spin {
-    0%,
-    100% {
+  @keyframes pulse {
+    0%, 100% {
       opacity: 1;
-      box-shadow: 0 0 0 0 var(--glow);
+      box-shadow: 0 0 0 0 var(--accent-soft);
     }
     50% {
       opacity: 0.5;
@@ -266,15 +241,8 @@
     .bento__grid {
       grid-template-columns: 1fr;
       grid-template-areas:
-        'tokens'
-        'type'
-        'motion'
-        'icons'
-        'wall';
+        'tokens' 'type' 'motion' 'icons' 'wall';
     }
-
-    .tile__glyphs {
-      grid-template-columns: repeat(4, 1fr);
-    }
+    .tile__glyphs { grid-template-columns: repeat(4, 1fr); }
   }
 </style>

@@ -60,7 +60,7 @@
 
   .select__control:focus {
     border-color: var(--ring);
-    box-shadow: 0 0 0 3px var(--glow);
+    box-shadow: 0 0 0 3px var(--accent-soft);
   }
 
   .select__control:disabled {
