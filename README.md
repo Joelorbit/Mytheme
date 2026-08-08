@@ -1,4 +1,4 @@
-# EyuTaste
+# EyuTaste(Inspired by Robi)
 
 Svelte 5 design system for all Eyuel brand things. Premium monochrome, painted-wall canvas, sharp technical icons, engineered type.
 
