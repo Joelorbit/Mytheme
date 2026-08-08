@@ -43,7 +43,7 @@
   }
 
   .marquee__band :global(svg) {
-    color: var(--accent);
+    color: var(--text-muted);
     opacity: 0.6;
   }
 

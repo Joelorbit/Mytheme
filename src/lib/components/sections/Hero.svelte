@@ -6,45 +6,43 @@
 
 <section class="hero">
   <div class="hero__body">
-    <p class="caption hero__eyebrow">EyuTaste — design system · v2.0</p>
+    <p class="caption hero__eyebrow">EyuTaste — design system · v3.0</p>
     <h1 class="display hero__title">
       Taste,<br />
       <em class="display--emphasis">tuned.</em>
     </h1>
     <p class="body-lg hero__sub">
-      A premium monochrome system — painted wall canvas, sharp icons, engineered
+      A premium monochrome system — cool blue-gray canvas, sharp icons, engineered
       type and motion. Built to be maintained, not showcased.
     </p>
     <div class="hero__cta">
       <Button href="#system" external size="lg">Explore the system</Button>
     </div>
-    <p class="mono-xs hero__meta">oklch contract · 8pt grid · 40 glyphs</p>
+    <p class="mono-xs hero__meta">oklch contract · 8pt grid · 1.333x scale</p>
   </div>
 
   <div class="specimen" aria-hidden="true">
     <div class="specimen__panel specimen__panel--type">
       <div class="specimen__row">
-        <span class="mono-xs">type — fraunces · geist</span>
+        <span class="mono-xs">type — plus jakarta sans</span>
         <span class="specimen__pulse"></span>
       </div>
       <div class="specimen__aa">Aa</div>
       <div class="specimen__scale">
         <span class="mono-xs">display 7.5</span>
-        <span class="mono-xs">heading 2.5</span>
+        <span class="mono-xs">heading 2.4</span>
         <span class="mono-xs">body 1.0</span>
       </div>
     </div>
     <div class="specimen__panel specimen__panel--tokens">
       <div class="specimen__row">
         <span class="mono-xs">neutral ramp — 10 steps</span>
-        <span class="mono-xs">violet · teal</span>
+        <span class="mono-xs">cool blue-gray</span>
       </div>
       <div class="specimen__ramp">
         {#each ramp as c}
           <span class="specimen__swatch" style="background:{c}"></span>
         {/each}
-        <span class="specimen__swatch specimen__swatch--accent"></span>
-        <span class="specimen__swatch specimen__swatch--complement"></span>
       </div>
     </div>
     <div class="specimen__panel specimen__panel--icons">
@@ -73,7 +71,7 @@
   }
 
   .hero__eyebrow {
-    color: var(--accent);
+    color: var(--text-muted);
   }
 
   .hero__title {
@@ -141,7 +139,7 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--text-muted);
     animation: pulse 2.4s var(--ease-emphasis) infinite;
   }
 
@@ -149,7 +147,7 @@
     0%,
     100% {
       opacity: 1;
-      box-shadow: 0 0 0 0 var(--accent-soft);
+      box-shadow: 0 0 0 0 var(--glow);
     }
     50% {
       opacity: 0.5;
@@ -160,7 +158,6 @@
   .specimen__aa {
     margin-top: var(--space-4);
     font-family: var(--font-display);
-    font-variation-settings: 'SOFT' 60, 'WONK' 0, 'opsz' 144;
     font-size: clamp(4rem, 8vw, 6.5rem);
     line-height: 0.9;
     color: var(--text-primary);
@@ -187,16 +184,6 @@
     border: 1px solid var(--line-soft);
   }
 
-  .specimen__swatch--accent {
-    background: var(--accent);
-    border-color: transparent;
-  }
-
-  .specimen__swatch--complement {
-    background: var(--complement);
-    border-color: transparent;
-  }
-
   .specimen__icons {
     display: flex;
     gap: var(--space-4);
@@ -209,7 +196,7 @@
   }
 
   .specimen__icon:hover {
-    color: var(--accent);
+    color: var(--text-primary);
   }
 
   @media (max-width: 1000px) {

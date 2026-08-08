@@ -1,4 +1,4 @@
-export const ramp = ['var(--n-40)', 'var(--n-300)', 'var(--n-600)', 'var(--n-850)', 'var(--n-1000)'] as const;
+export const ramp = ['var(--n-100)', 'var(--n-300)', 'var(--n-500)', 'var(--n-700)', 'var(--n-900)'] as const;
 
 export const iconRow = [
   'badge-check',

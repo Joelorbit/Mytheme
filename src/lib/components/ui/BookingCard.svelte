@@ -125,7 +125,7 @@
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    color: var(--accent);
+    color: var(--text-primary);
   }
 
   .booking__plus {
@@ -206,7 +206,7 @@
   }
 
   .booking__cta :global(svg) {
-    color: var(--accent);
+    color: var(--text-primary);
     transition: transform var(--dur-2) var(--ease-standard);
   }
 
@@ -265,7 +265,7 @@
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    color: var(--accent);
+    color: var(--text-primary);
   }
 
   .booking-modal__close {

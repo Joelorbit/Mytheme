@@ -1,12 +1,11 @@
 /* ============================================================================
-   EYUTHEME DESIGN SYSTEM — BASE
-   Global styles + utility classes. Token contract lives in tokens.css.
+   EYUTHEME DESIGN SYSTEM — BASE v3
+   TailwindCSS hybrid. Token contract in tokens.css.
    ============================================================================ */
 
-/* ---------- premium surface backdrop ----------
-   One matte base + one barely-visible film grain. No patterns, no gradients.
-   Grain is a seamless monochrome turbulence tile, blended in overlay mode.
-   Opacity per mode: dark 3% · light 1.5%. Throttled by device class. */
+/* ---------- ultra-fine noise surface ----------
+   Barely perceptible texture. 300px tile, 1.2 frequency, ~1.8% opacity dark / 1.2% light.
+   Throttled by device class. */
 body {
   margin: 0;
   min-width: 320px;
@@ -21,14 +20,6 @@ body {
   line-height: var(--lh-body);
 }
 
-/* fixed turbulence ref for the grain overlay on body::before */
-.grain-svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
 body::before {
   position: fixed;
   inset: 0;
@@ -41,16 +32,15 @@ body::before {
   opacity: var(--grain-opacity);
 }
 
-/* desktop = 100% · tablet = 80% · mobile = 60% texture strength */
 @media (max-width: 1024px) and (min-width: 601px) {
   body::before {
-    opacity: calc(var(--grain-opacity) * 0.8);
+    opacity: calc(var(--grain-opacity) * 0.7);
   }
 }
 
 @media (max-width: 600px) {
   body::before {
-    opacity: calc(var(--grain-opacity) * 0.6);
+    opacity: calc(var(--grain-opacity) * 0.5);
   }
 }
 
@@ -99,8 +89,8 @@ ol {
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--ink);
+  color: var(--ink-inverse);
 }
 
 :focus-visible {
@@ -109,23 +99,22 @@ ol {
 }
 
 /* ---------- type system utilities ---------- */
-/* display — Fraunces. --hero opens the optical-size axis for giant sizes. */
 .display {
   font-family: var(--font-display);
   letter-spacing: var(--tracking-display);
   line-height: var(--lh-display);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .display--hero {
-  font-variation-settings: 'SOFT' 60, 'WONK' 0, 'opsz' 144;
   line-height: 0.98;
   letter-spacing: var(--tracking-display);
+  font-weight: 700;
 }
 
 .display--emphasis {
   font-style: italic;
-  color: var(--accent);
+  color: var(--text-muted);
 }
 
 .display-lg { font-size: var(--display-lg); }
@@ -134,7 +123,7 @@ ol {
 
 .heading {
   font-family: var(--font-display);
-  font-weight: 450;
+  font-weight: 600;
   letter-spacing: var(--tracking-heading);
   line-height: var(--lh-heading);
 }
@@ -148,7 +137,6 @@ ol {
 .body-sm { font-size: var(--body-sm); }
 .body-xs { font-size: var(--body-xs); }
 
-/* caption: mono micro-labels, engineered to sit anywhere */
 .caption {
   font-family: var(--font-mono);
   font-size: var(--caption);
@@ -172,9 +160,7 @@ ol {
 .shadow-2 { box-shadow: var(--shadow-2); }
 .shadow-3 { box-shadow: var(--shadow-3); }
 
-/* ---------- pattern library ----------
-   Opt-in accent surfaces. NOT applied to page background by default —
-   use sparingly on decorative containers only. */
+/* ---------- pattern library ---------- */
 .pattern-plus {
   background-color: var(--bg);
   background-image: var(--plus-pattern);
@@ -194,12 +180,6 @@ ol {
   background-color: var(--bg);
   background-image: radial-gradient(circle, var(--line-soft) 1px, transparent 1.4px);
   background-size: 22px 22px;
-}
-
-.pattern-grain {
-  background-image: var(--grain-pattern);
-  background-size: var(--grain-size) var(--grain-size);
-  background-repeat: repeat;
 }
 
 /* ---------- layout ---------- */

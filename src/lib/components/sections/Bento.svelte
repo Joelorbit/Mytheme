@@ -23,7 +23,7 @@
       <span class="tile__icon"><Icon name="book-open" size={20} strokeWidth={1.5} /></span>
       <h3 class="heading heading-sm tile__title">Engineered type</h3>
       <p class="body-sm tile__copy">
-        Fraunces display, Geist body, mono labels. Rhythm from type, not margins.
+        Plus Jakarta Sans throughout. 1.333x modular scale. Rhythm from type, not margins.
       </p>
       <div class="tile__foot mono-xs">display → caption</div>
     </article>
@@ -59,16 +59,16 @@
     <article id="tokens" class="tile tile--wall">
       <span class="tile__idx mono-xs">05</span>
       <span class="tile__icon"><Icon name="frame" size={20} strokeWidth={1.5} /></span>
-      <h3 class="heading heading-sm tile__title">Painted wall</h3>
+      <h3 class="heading heading-sm tile__title">Ultra-fine surface</h3>
       <p class="body-sm tile__copy">
-        Roller sheen, paint dust, film grain. The page is the texture.
+        Barely perceptible noise texture. The page breathes, not shouts.
       </p>
       <div class="tile__patterns">
         <span class="tile__pattern pattern-dots"></span>
         <span class="tile__pattern pattern-plus"></span>
         <span class="tile__pattern pattern-grid"></span>
       </div>
-      <div class="tile__foot mono-xs">.. ++ ## · grain 3%</div>
+      <div class="tile__foot mono-xs">.. ++ ## · noise 1.8%</div>
     </article>
   </div>
 </section>
@@ -79,7 +79,7 @@
   }
 
   .bento__label {
-    color: var(--accent);
+    color: var(--text-muted);
   }
 
   .bento__head {
@@ -181,12 +181,12 @@
     margin-top: var(--space-6);
     place-items: center;
     border-radius: var(--radius-md);
-    background: var(--accent-soft);
-    color: var(--accent);
+    background: var(--surface-hover);
+    color: var(--text-primary);
   }
 
   .tile__icon--spin :global(svg) {
-    animation: pulse 2.4s var(--ease-emphasis) infinite;
+    animation: spin 2.4s var(--ease-emphasis) infinite;
   }
 
   .tile__title {
@@ -226,7 +226,7 @@
   }
 
   .tile__glyph:hover {
-    color: var(--accent);
+    color: var(--text-primary);
   }
 
   @keyframes float {
@@ -239,11 +239,11 @@
     }
   }
 
-  @keyframes pulse {
+  @keyframes spin {
     0%,
     100% {
       opacity: 1;
-      box-shadow: 0 0 0 0 var(--accent-soft);
+      box-shadow: 0 0 0 0 var(--glow);
     }
     50% {
       opacity: 0.5;

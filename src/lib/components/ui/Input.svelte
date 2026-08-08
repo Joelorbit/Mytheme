@@ -72,7 +72,7 @@
 
   .field__input:focus {
     border-color: var(--ring);
-    box-shadow: 0 0 0 3px var(--accent-soft);
+    box-shadow: 0 0 0 3px var(--glow);
   }
 
   .field__input--error,

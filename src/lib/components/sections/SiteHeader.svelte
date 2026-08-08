@@ -57,7 +57,7 @@
     font-family: var(--font-display);
     font-size: 1.05rem;
     font-style: italic;
-    color: var(--accent);
+    color: var(--text-primary);
   }
 
   .head__word {
