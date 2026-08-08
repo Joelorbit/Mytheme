@@ -24,7 +24,7 @@
   <div class="specimen" aria-hidden="true">
     <div class="specimen__panel specimen__panel--type">
       <div class="specimen__row">
-        <span class="mono-xs">type — lexend</span>
+        <span class="mono-xs">type — outfit + lexend</span>
         <span class="specimen__pulse"></span>
       </div>
       <div class="specimen__aa">Aa</div>
@@ -37,7 +37,7 @@
     <div class="specimen__panel specimen__panel--tokens">
       <div class="specimen__row">
         <span class="mono-xs">neutral ramp + energy</span>
-        <span class="mono-xs">indigo · amber</span>
+        <span class="mono-xs">blue-violet · gold</span>
       </div>
       <div class="specimen__ramp">
         {#each ramp as c}

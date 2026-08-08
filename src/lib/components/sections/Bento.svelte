@@ -23,7 +23,7 @@
       <span class="tile__icon"><Icon name="book-open" size={20} strokeWidth={1.5} /></span>
       <h3 class="heading heading-sm tile__title">Engineered type</h3>
       <p class="body-sm tile__copy">
-        Lexend throughout. 1.333x modular scale. Rhythm from type, not margins.
+        Outfit display, Lexend body. 1.333x modular scale. Rhythm from type, not margins.
       </p>
       <div class="tile__foot mono-xs">display → caption</div>
     </article>
@@ -68,7 +68,7 @@
         <span class="tile__pattern pattern-plus"></span>
         <span class="tile__pattern pattern-grid"></span>
       </div>
-      <div class="tile__foot mono-xs">.. ++ ## · grain 3%</div>
+      <div class="tile__foot mono-xs">.. ++ ## · noise 2.5%</div>
     </article>
   </div>
 </section>
