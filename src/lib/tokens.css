@@ -1,19 +1,28 @@
 /* ============================================================================
-   EYUTHEME DESIGN SYSTEM — TOKEN CONTRACT v5
+   EYUTHEME DESIGN SYSTEM — TOKEN CONTRACT v6 (COMPLETE)
    ----------------------------------------------------------------------------
-   Identity: Outfit display + Lexend body, extreme complementary palette,
-   fine digital noise. YOUR texture, YOUR colors.
+   YOUR personal design foundation. Drop into any project.
+   Outfit display + Lexend body, blue-violet + gold, fine digital noise.
 
-   Architecture:
-     1. NEUTRAL RAMP  -- cool blue-gray monochrome core
-     2. SURFACE STACK -- 5 layers of depth (bg → elevated → overlay)
-     3. ENERGY        -- cool blue-violet accent + warm gold complement
-     4. TYPE SYSTEM   -- 1.333x modular scale, Outfit + Lexend
-     5. SPACE         -- 8pt grid
-     6. RADIUS / SHADOW / MOTION / Z
-     7. TEXTURE       -- fine digital noise ( YOUR grain )
+   ARCHITECTURE:
+     1. NEUTRAL RAMP    -- cool blue-gray, 13 steps (50 → 1000)
+     2. SURFACE STACK   -- 6 layers of depth
+     3. TEXT OPACITY    -- 5 text tiers
+     4. BORDER / LINE   -- 4 border strengths
+     5. INTERACTIVE     -- hover, active, disabled states
+     6. ACCENT          -- blue-violet palette (50 → 950)
+     7. COMPLEMENT      -- gold palette (50 → 950)
+     8. STATUS          -- success / warning / danger / info (50 → 950)
+     9. TYPE SYSTEM     -- 1.333x modular scale, 3 families
+     10. SPACE          -- 8pt grid (12 steps)
+     11. RADIUS         -- 5 corner radii
+     12. SHADOW         -- 5 elevation levels + accent glows
+     13. MOTION         -- 3 durations + 2 easings
+     14. Z-INDEX        -- 4 stacking layers
+     15. TEXTURE        -- fine digital noise ( YOUR grain )
+     16. CONTAINER      -- max-width breakpoint
 
-   Dark is the default mode.
+   Dark is the default. Light is first-class.
    ============================================================================ */
 
 @import "tailwindcss";
@@ -26,36 +35,27 @@
 
   --color-background: var(--bg);
   --color-foreground: var(--ink);
-
   --color-card: var(--surface);
   --color-card-foreground: var(--ink);
-
   --color-popover: var(--surface-elevated);
   --color-popover-foreground: var(--ink);
-
   --color-primary: var(--accent);
   --color-primary-foreground: var(--on-accent);
-
   --color-secondary: var(--complement);
   --color-secondary-foreground: var(--on-complement);
-
   --color-muted: var(--surface);
   --color-muted-foreground: var(--text-muted);
-
   --color-accent: var(--accent);
   --color-accent-foreground: var(--on-accent);
-
   --color-destructive: var(--danger);
-  --color-destructive-foreground: var(--ink-inverse);
-
+  --color-destructive-foreground: var(--on-danger);
   --color-border: var(--line);
   --color-input: var(--line-strong);
   --color-ring: var(--ring);
-
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-danger: var(--danger);
-
+  --color-info: var(--info);
   --color-accent-soft: var(--accent-soft);
   --color-complement-soft: var(--complement-soft);
 
@@ -64,6 +64,9 @@
   --font-display: 'Outfit', system-ui, sans-serif;
 }
 
+/* ============================================================================
+   DARK MODE (default)
+   ============================================================================ */
 :root {
   color-scheme: dark;
   --radius: 0.425rem;
@@ -78,61 +81,134 @@
   --n-600: oklch(0.4862 0.0139 169.78);
   --n-700: oklch(0.3933 0.0116 171.21);
   --n-800: oklch(0.3066 0.0090 173.70);
+  --n-850: oklch(0.2650 0.0070 173.80);
   --n-900: oklch(0.2272 0.0049 173.95);
   --n-950: oklch(0.1920 0.0051 173.79);
   --n-1000: oklch(0.1563 0.0039 164.47);
 
-  /* ============ 2. SURFACE STACK — 5 layers of depth ============ */
+  /* ============ 2. SURFACE STACK — 6 layers ============ */
   --bg: var(--n-900);
   --surface: var(--n-800);
   --surface-elevated: var(--n-700);
   --surface-raised: var(--n-600);
+  --surface-overlay: var(--n-500);
   --surface-pressed: var(--n-950);
   --surface-inset: var(--n-950);
 
+  /* ============ 3. TEXT ============ */
   --ink: var(--n-50);
   --ink-inverse: var(--n-1000);
-
   --text-primary: var(--ink);
   --text-secondary: color-mix(in srgb, var(--ink) 68%, transparent);
   --text-muted: color-mix(in srgb, var(--ink) 48%, transparent);
   --text-faint: color-mix(in srgb, var(--ink) 16%, transparent);
   --text-disabled: color-mix(in srgb, var(--ink) 30%, transparent);
 
+  /* ============ 4. BORDER / LINE ============ */
   --line: color-mix(in srgb, var(--ink) 14%, transparent);
   --line-strong: color-mix(in srgb, var(--ink) 26%, transparent);
   --line-soft: color-mix(in srgb, var(--ink) 6%, transparent);
   --card-border: color-mix(in srgb, var(--ink) 9%, transparent);
 
+  /* ============ 5. INTERACTIVE ============ */
   --surface-hover: color-mix(in srgb, var(--ink) 5%, transparent);
   --surface-active: color-mix(in srgb, var(--ink) 9%, transparent);
   --disabled-bg: color-mix(in srgb, var(--ink) 5%, transparent);
-
   --overlay: color-mix(in srgb, var(--bg) 80%, transparent);
   --glow: color-mix(in srgb, var(--ink) 5%, transparent);
 
-  /* ============ 3. ENERGY — cool blue-violet + warm gold ============ */
-  /* Blue-violet: pushed cooler. Hue 265 — more blue, less purple. High chroma. */
+  /* ============ 6. ACCENT — blue-violet ============ */
+  --accent-50: oklch(0.97 0.02 265);
+  --accent-100: oklch(0.93 0.04 265);
+  --accent-200: oklch(0.87 0.08 265);
+  --accent-300: oklch(0.78 0.12 265);
+  --accent-400: oklch(0.68 0.15 265);
   --accent: oklch(0.52 0.17 265);
+  --accent-600: oklch(0.46 0.18 265);
+  --accent-700: oklch(0.40 0.17 265);
+  --accent-800: oklch(0.34 0.15 265);
+  --accent-900: oklch(0.28 0.12 265);
+  --accent-950: oklch(0.22 0.10 265);
   --accent-strong: oklch(0.58 0.15 265);
   --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
   --on-accent: oklch(0.97 0.005 265);
 
-  /* Gold: pushed warmer. Hue 60 — pure gold, not amber. Rich, saturated. */
+  /* ============ 7. COMPLEMENT — gold ============ */
+  --complement-50: oklch(0.97 0.02 60);
+  --complement-100: oklch(0.93 0.04 60);
+  --complement-200: oklch(0.87 0.07 60);
+  --complement-300: oklch(0.80 0.10 60);
+  --complement-400: oklch(0.73 0.12 60);
   --complement: oklch(0.65 0.14 60);
+  --complement-600: oklch(0.58 0.14 60);
+  --complement-700: oklch(0.50 0.13 60);
+  --complement-800: oklch(0.42 0.11 60);
+  --complement-900: oklch(0.35 0.09 60);
+  --complement-950: oklch(0.28 0.07 60);
   --complement-strong: oklch(0.72 0.11 60);
   --complement-soft: color-mix(in srgb, var(--complement) 10%, transparent);
   --on-complement: oklch(0.15 0.01 60);
 
+  /* ============ 8. STATUS ============ */
+  /* Success — teal-green */
+  --success-50: oklch(0.97 0.02 155);
+  --success-100: oklch(0.93 0.04 155);
+  --success-200: oklch(0.87 0.06 155);
+  --success-300: oklch(0.80 0.08 155);
+  --success-400: oklch(0.72 0.10 155);
+  --success: oklch(0.62 0.09 155);
+  --success-600: oklch(0.55 0.10 155);
+  --success-700: oklch(0.48 0.09 155);
+  --success-800: oklch(0.40 0.08 155);
+  --success-900: oklch(0.33 0.06 155);
+  --success-soft: color-mix(in srgb, var(--success) 14%, transparent);
+  --on-success: oklch(0.97 0.01 155);
+
+  /* Warning — amber-orange */
+  --warning-50: oklch(0.97 0.02 82);
+  --warning-100: oklch(0.93 0.04 82);
+  --warning-200: oklch(0.87 0.06 82);
+  --warning-300: oklch(0.80 0.08 82);
+  --warning-400: oklch(0.76 0.09 82);
+  --warning: oklch(0.72 0.09 82);
+  --warning-600: oklch(0.65 0.10 82);
+  --warning-700: oklch(0.58 0.10 82);
+  --warning-800: oklch(0.50 0.09 82);
+  --warning-900: oklch(0.42 0.07 82);
+  --warning-soft: color-mix(in srgb, var(--warning) 14%, transparent);
+  --on-warning: oklch(0.20 0.02 82);
+
+  /* Danger — red-crimson */
+  --danger-50: oklch(0.97 0.02 22);
+  --danger-100: oklch(0.93 0.04 22);
+  --danger-200: oklch(0.87 0.07 22);
+  --danger-300: oklch(0.80 0.10 22);
+  --danger-400: oklch(0.72 0.12 22);
+  --danger: oklch(0.62 0.12 22);
+  --danger-600: oklch(0.55 0.13 22);
+  --danger-700: oklch(0.48 0.12 22);
+  --danger-800: oklch(0.40 0.10 22);
+  --danger-900: oklch(0.33 0.08 22);
+  --danger-soft: color-mix(in srgb, var(--danger) 14%, transparent);
+  --on-danger: oklch(0.97 0.01 22);
+
+  /* Info — sky-blue */
+  --info-50: oklch(0.97 0.02 240);
+  --info-100: oklch(0.93 0.04 240);
+  --info-200: oklch(0.87 0.06 240);
+  --info-300: oklch(0.80 0.08 240);
+  --info-400: oklch(0.72 0.09 240);
+  --info: oklch(0.62 0.09 240);
+  --info-600: oklch(0.55 0.10 240);
+  --info-700: oklch(0.48 0.09 240);
+  --info-800: oklch(0.40 0.08 240);
+  --info-900: oklch(0.33 0.06 240);
+  --info-soft: color-mix(in srgb, var(--info) 14%, transparent);
+  --on-info: oklch(0.97 0.01 240);
+
   --ring: color-mix(in srgb, var(--accent) 50%, transparent);
 
-  /* ============ 4. STATUS ============ */
-  --success: oklch(0.62 0.09 155);
-  --warning: oklch(0.72 0.09 82);
-  --danger: oklch(0.62 0.12 22);
-  --danger-soft: color-mix(in srgb, var(--danger) 14%, transparent);
-
-  /* ============ 5. TYPE SYSTEM — 1.333x modular scale ============ */
+  /* ============ 9. TYPE SYSTEM — 1.333x ============ */
   --font-display: 'Outfit', system-ui, sans-serif;
   --font-body: 'Lexend', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -164,7 +240,7 @@
   --tracking-caption: 0.08em;
   --tracking-mono: 0;
 
-  /* ============ 6. SPACE — 8pt grid ============ */
+  /* ============ 10. SPACE — 8pt grid ============ */
   --space-0: 0;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -179,36 +255,43 @@
   --space-11: 6rem;
   --space-12: 8rem;
 
-  /* ============ 7. RADIUS / SHADOW / MOTION / Z ============ */
+  /* ============ 11. RADIUS ============ */
   --radius-xs: 2px;
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 10px;
   --radius-pill: 999px;
 
+  /* ============ 12. SHADOW ============ */
   --shadow-1: 0 1px 2px var(--glow), 0 2px 8px var(--glow);
   --shadow-2: 0 4px 16px var(--glow), 0 12px 40px var(--glow);
   --shadow-3: 0 8px 24px var(--glow), 0 32px 96px var(--glow);
-
+  --shadow-4: 0 16px 48px var(--glow), 0 48px 128px var(--glow);
   --shadow-accent: 0 0 0 1px var(--accent-soft), 0 4px 16px color-mix(in srgb, var(--accent) 20%, transparent);
   --shadow-complement: 0 0 0 1px var(--complement-soft), 0 4px 16px color-mix(in srgb, var(--complement) 15%, transparent);
+  --shadow-inset: inset 0 1px 2px var(--glow);
 
+  /* ============ 13. MOTION ============ */
   --dur-1: 100ms;
   --dur-2: 160ms;
   --dur-3: 240ms;
+  --dur-4: 400ms;
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
+  /* ============ 14. Z-INDEX ============ */
+  --z-base: 0;
   --z-raised: 100;
   --z-nav: 200;
   --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
   --z-grain: 9999;
 
-  /* ============ 8. TEXTURE — fine digital noise (YOUR grain) ============ */
+  /* ============ 15. TEXTURE — fine digital noise ============ */
   --container: 1600px;
 
-  /* Higher frequency (1.2), different seed (42), finer grain.
-     Smaller tile (150px) = denser noise. YOUR texture, not skit's. */
   --grain-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='4' seed='42' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23n)'/%3E%3C/svg%3E");
   --grain-opacity: 0.025;
   --grain-blend: overlay;
@@ -233,6 +316,7 @@
   --n-600: oklch(0.7579 0.0048 134.86);
   --n-700: oklch(0.6618 0.0031 128.51);
   --n-800: oklch(0.5483 0.0015 106.45);
+  --n-850: oklch(0.4800 0.0015 106.45);
   --n-900: oklch(0.4236 0.0016 106.47);
   --n-950: oklch(0.3325 0.0017 106.49);
   --n-1000: oklch(0.2389 0.0019 106.54);
@@ -242,6 +326,7 @@
   --surface: var(--n-100);
   --surface-elevated: var(--n-50);
   --surface-raised: var(--n-50);
+  --surface-overlay: var(--n-50);
   --surface-pressed: var(--n-200);
   --surface-inset: var(--n-200);
   --ink: var(--n-900);
@@ -260,26 +345,59 @@
   --surface-hover: color-mix(in srgb, var(--ink) 4%, transparent);
   --surface-active: color-mix(in srgb, var(--ink) 8%, transparent);
   --disabled-bg: color-mix(in srgb, var(--ink) 5%, transparent);
-
   --overlay: color-mix(in srgb, var(--bg) 82%, transparent);
   --glow: color-mix(in srgb, var(--ink) 6%, transparent);
 
+  /* Accent — darker in light for contrast */
+  --accent-50: oklch(0.97 0.02 265);
+  --accent-100: oklch(0.93 0.04 265);
+  --accent-200: oklch(0.87 0.08 265);
+  --accent-300: oklch(0.78 0.12 265);
+  --accent-400: oklch(0.68 0.15 265);
   --accent: oklch(0.45 0.18 265);
+  --accent-600: oklch(0.40 0.20 265);
+  --accent-700: oklch(0.35 0.18 265);
+  --accent-800: oklch(0.30 0.15 265);
+  --accent-900: oklch(0.25 0.12 265);
+  --accent-950: oklch(0.20 0.10 265);
   --accent-strong: oklch(0.40 0.20 265);
   --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
   --on-accent: oklch(0.98 0.003 265);
 
+  /* Complement — darker in light */
+  --complement-50: oklch(0.97 0.02 60);
+  --complement-100: oklch(0.93 0.04 60);
+  --complement-200: oklch(0.87 0.07 60);
+  --complement-300: oklch(0.80 0.10 60);
+  --complement-400: oklch(0.73 0.12 60);
   --complement: oklch(0.58 0.15 60);
+  --complement-600: oklch(0.52 0.17 60);
+  --complement-700: oklch(0.45 0.15 60);
+  --complement-800: oklch(0.38 0.12 60);
+  --complement-900: oklch(0.32 0.10 60);
+  --complement-950: oklch(0.25 0.08 60);
   --complement-strong: oklch(0.52 0.17 60);
   --complement-soft: color-mix(in srgb, var(--complement) 8%, transparent);
   --on-complement: oklch(0.15 0.01 60);
 
-  --ring: color-mix(in srgb, var(--accent) 40%, transparent);
-
+  /* Status — adjusted for light */
   --success: oklch(0.52 0.10 155);
+  --success-soft: color-mix(in srgb, var(--success) 10%, transparent);
+  --on-success: oklch(0.20 0.02 155);
+
   --warning: oklch(0.62 0.10 82);
+  --warning-soft: color-mix(in srgb, var(--warning) 10%, transparent);
+  --on-warning: oklch(0.20 0.02 82);
+
   --danger: oklch(0.52 0.14 22);
   --danger-soft: color-mix(in srgb, var(--danger) 10%, transparent);
+  --on-danger: oklch(0.97 0.01 22);
+
+  --info: oklch(0.52 0.10 240);
+  --info-soft: color-mix(in srgb, var(--info) 10%, transparent);
+  --on-info: oklch(0.97 0.01 240);
+
+  --ring: color-mix(in srgb, var(--accent) 40%, transparent);
 
   --grain-opacity: 0.018;
 
