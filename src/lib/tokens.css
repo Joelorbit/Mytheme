@@ -60,9 +60,9 @@
   --color-accent-soft: var(--accent-soft);
   --color-complement-soft: var(--complement-soft);
 
-  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-sans: 'Lexend', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Lexend', system-ui, sans-serif;
 }
 
 :root {
@@ -134,8 +134,8 @@
   --danger-soft: color-mix(in srgb, var(--danger) 14%, transparent);
 
   /* ============ 5. TYPE SYSTEM — 1.333x modular scale ============ */
-  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Lexend', system-ui, sans-serif;
+  --font-body: 'Lexend', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --display-lg: 7.478rem;

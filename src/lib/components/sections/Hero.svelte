@@ -24,7 +24,7 @@
   <div class="specimen" aria-hidden="true">
     <div class="specimen__panel specimen__panel--type">
       <div class="specimen__row">
-        <span class="mono-xs">type — plus jakarta sans</span>
+        <span class="mono-xs">type — lexend</span>
         <span class="specimen__pulse"></span>
       </div>
       <div class="specimen__aa">Aa</div>

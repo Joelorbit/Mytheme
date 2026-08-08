@@ -23,7 +23,7 @@
       <span class="tile__icon"><Icon name="book-open" size={20} strokeWidth={1.5} /></span>
       <h3 class="heading heading-sm tile__title">Engineered type</h3>
       <p class="body-sm tile__copy">
-        Plus Jakarta Sans throughout. 1.333x modular scale. Rhythm from type, not margins.
+        Lexend throughout. 1.333x modular scale. Rhythm from type, not margins.
       </p>
       <div class="tile__foot mono-xs">display → caption</div>
     </article>
