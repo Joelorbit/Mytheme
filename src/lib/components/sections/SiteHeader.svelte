@@ -16,9 +16,7 @@
     <span class="caption head__word">EyuTaste</span>
   </a>
   <nav class="head__nav" aria-label="Primary">
-    <a class="caption head__link" href="#system">System</a>
-    <a class="caption head__link" href="#tokens">Tokens</a>
-    <a class="caption head__link" href="#icons">Icons</a>
+    <a class="caption head__link" href="#styleguide">Design Patterns</a>
   </nav>
   <button class="theme-toggle" onclick={toggleTheme} aria-label="Toggle theme">
     {#if theme === 'dark'}

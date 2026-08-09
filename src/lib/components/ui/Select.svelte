@@ -1,12 +1,14 @@
 <script lang="ts">
   import Icon from '../primitives/Icon.svelte';
   import type { HTMLSelectAttributes } from 'svelte/elements';
+  import type { Snippet } from 'svelte';
 
   let {
     label,
     id,
+    children,
     ...rest
-  }: HTMLSelectAttributes & { label?: string } = $props();
+  }: HTMLSelectAttributes & { label?: string; children?: Snippet } = $props();
 </script>
 
 <div class="select">

@@ -164,7 +164,8 @@
     name,
     size = 20,
     strokeWidth = 1.5,
-  }: { name: IconName; size?: number; strokeWidth?: number } = $props();
+    class: className = '',
+  }: { name: IconName; size?: number; strokeWidth?: number; class?: string } = $props();
 </script>
 
 <svg
@@ -179,6 +180,7 @@
   stroke-linejoin="miter"
   aria-hidden="true"
   focusable="false"
+  class={className}
 >
-  {@html glyphs[name]}
+  {@html glyphs[name] || ''}
 </svg>

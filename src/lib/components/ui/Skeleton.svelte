@@ -14,9 +14,11 @@
 
 <span
   class="skeleton {className}"
-  style="width: {width}; height: {height}; border-radius: {radius};"
+  style:width={width}
+  style:height={height}
+  style:border-radius={radius}
   aria-hidden="true"
-/>
+></span>
 
 <style>
   .skeleton {

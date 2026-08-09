@@ -12,11 +12,12 @@
       <em class="display--emphasis">tuned.</em>
     </h1>
     <p class="body-lg hero__sub">
-      Dark complementary palette, film grain texture, engineered type.
-      Built to be maintained, not showcased.
+      Futuristic dark green-slate palette, glowing cream & emerald energy, constant digital grain texture.
+      Engineered for high performance.
     </p>
     <div class="hero__cta">
-      <Button href="#system" external size="lg">Explore the system</Button>
+      <Button href="#styleguide" size="lg">Design Patterns</Button>
+      <Button href="https://github.com/Joelorbit/Mytheme" target="_blank" external variant="secondary" size="lg">GitHub</Button>
     </div>
     <p class="mono-xs hero__meta">oklch contract · 8pt grid · 1.333x scale</p>
   </div>
@@ -37,7 +38,7 @@
     <div class="specimen__panel specimen__panel--tokens">
       <div class="specimen__row">
         <span class="mono-xs">neutral ramp + energy</span>
-        <span class="mono-xs">blue-violet · gold</span>
+        <span class="mono-xs">green-grey · cream · emerald</span>
       </div>
       <div class="specimen__ramp">
         {#each ramp as c}
@@ -89,6 +90,8 @@
   }
 
   .hero__cta {
+    display: flex;
+    gap: var(--space-4);
     margin: var(--space-7) 0 0;
   }
 

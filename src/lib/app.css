@@ -22,8 +22,7 @@ body {
   position: relative;
 }
 
-body::before,
-body::after {
+body::before {
   position: absolute;
   left: 0;
   top: 0;
@@ -32,22 +31,10 @@ body::after {
   height: 100%;
   z-index: var(--z-grain);
   pointer-events: none;
-}
-
-body::before {
-  background-image: var(--grain-svg);
-  background-size: 200px 200px;
-  mix-blend-mode: var(--grain-blend);
-  opacity: var(--grain-opacity);
-}
-
-/* contrast boost for grain definition (skit technique) */
-body::after {
-  background-image: var(--grain-svg);
-  background-size: 200px 200px;
-  mix-blend-mode: overlay;
-  opacity: calc(var(--grain-opacity) * 0.5);
-  filter: contrast(150%) brightness(300%);
+  background-image: var(--plus-pattern), var(--dot-pattern), var(--grain-svg);
+  background-size: var(--plus-size) var(--plus-size), 24px 24px, 200px 200px;
+  background-repeat: repeat;
+  opacity: 0.20;
 }
 
 /* ---------- reset ---------- */

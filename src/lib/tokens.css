@@ -49,67 +49,70 @@
   color-scheme: dark;
   --radius: 0.425rem;
 
-  /* ============ NEUTRAL RAMP ============ */
-  --n-50: oklch(0.9543 0.0094 171.80);
-  --n-100: oklch(0.8892 0.0199 172.73);
-  --n-200: oklch(0.7913 0.0185 169.94);
-  --n-300: oklch(0.7447 0.0172 172.46);
-  --n-400: oklch(0.6808 0.0165 170.80);
-  --n-500: oklch(0.5959 0.0150 166.86);
-  --n-600: oklch(0.4862 0.0139 169.78);
-  --n-700: oklch(0.3933 0.0116 171.21);
-  --n-800: oklch(0.3066 0.0090 173.70);
-  --n-900: oklch(0.2272 0.0049 173.95);
-  --n-950: oklch(0.1920 0.0051 173.79);
-  --n-1000: oklch(0.1563 0.0039 164.47);
+  /* ============ EXACT USER CUSTOM PALETTE ============ */
+  /* #232323 (dark charcoal base), #d3d5d0 (sage cream grey), #5a6237 (olive moss), #b48148 (golden ochre), #7e5026 (amber terracotta) */
+  --n-50: #d3d5d0;
+  --n-100: #b8bab3;
+  --n-200: #9e9f9a;
+  --n-300: #848580;
+  --n-400: #6b6b67;
+  --n-500: #52534f;
+  --n-600: #3c3c3c;
+  --n-700: #323232;
+  --n-800: #2a2a2a;
+  --n-900: #262626;
+  --n-950: #232323;
+  --n-1000: #1a1a1a;
 
   /* ============ SURFACES ============ */
-  --bg: var(--n-900);
-  --surface: var(--n-800);
-  --surface-elevated: var(--n-700);
-  --surface-raised: var(--n-600);
-  --surface-pressed: var(--n-950);
-  --surface-inset: var(--n-950);
+  --bg: #232323;
+  --surface: #2a2a2a;
+  --surface-elevated: #323232;
+  --surface-raised: #3c3c3c;
+  --surface-pressed: #1a1a1a;
+  --surface-inset: #1a1a1a;
 
-  --ink: var(--n-50);
-  --ink-inverse: var(--n-1000);
+  --ink: #d3d5d0;
+  --ink-inverse: #232323;
 
-  --text-primary: var(--ink);
-  --text-secondary: color-mix(in srgb, var(--ink) 68%, transparent);
-  --text-muted: color-mix(in srgb, var(--ink) 48%, transparent);
-  --text-faint: color-mix(in srgb, var(--ink) 16%, transparent);
-  --text-disabled: color-mix(in srgb, var(--ink) 30%, transparent);
+  --text-primary: #d3d5d0;
+  --text-secondary: color-mix(in srgb, #d3d5d0 82%, transparent);
+  --text-muted: color-mix(in srgb, #d3d5d0 68%, transparent);
+  --text-faint: color-mix(in srgb, #d3d5d0 46%, transparent);
+  --text-disabled: color-mix(in srgb, #d3d5d0 42%, transparent);
 
-  --line: color-mix(in srgb, var(--ink) 14%, transparent);
-  --line-strong: color-mix(in srgb, var(--ink) 26%, transparent);
-  --line-soft: color-mix(in srgb, var(--ink) 6%, transparent);
-  --card-border: color-mix(in srgb, var(--ink) 9%, transparent);
+  --line: color-mix(in srgb, #d3d5d0 14%, transparent);
+  --line-strong: color-mix(in srgb, #d3d5d0 28%, transparent);
+  --line-soft: color-mix(in srgb, #d3d5d0 7%, transparent);
+  --card-border: color-mix(in srgb, #d3d5d0 11%, transparent);
 
-  --surface-hover: color-mix(in srgb, var(--ink) 5%, transparent);
-  --surface-active: color-mix(in srgb, var(--ink) 9%, transparent);
-  --disabled-bg: color-mix(in srgb, var(--ink) 5%, transparent);
-  --overlay: color-mix(in srgb, var(--bg) 80%, transparent);
-  --glow: color-mix(in srgb, var(--ink) 5%, transparent);
+  --surface-hover: color-mix(in srgb, #d3d5d0 6%, transparent);
+  --surface-active: color-mix(in srgb, #d3d5d0 11%, transparent);
+  --disabled-bg: color-mix(in srgb, #d3d5d0 6%, transparent);
+  --overlay: color-mix(in srgb, var(--bg) 85%, transparent);
+  --glow: color-mix(in srgb, #d3d5d0 6%, transparent);
 
-  /* ============ ACCENT — blue-violet ============ */
-  --accent: oklch(0.52 0.17 265);
-  --accent-strong: oklch(0.58 0.15 265);
-  --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
-  --on-accent: oklch(0.97 0.005 265);
+  /* ============ ACCENTS (User Specified) ============ */
+  --accent: #5a6237;            /* Olive Moss Green */
+  --accent-strong: #6c7642;
+  --accent-soft: color-mix(in srgb, #5a6237 20%, transparent);
+  --on-accent: #d3d5d0;
 
-  /* ============ COMPLEMENT — gold ============ */
-  --complement: oklch(0.65 0.14 60);
-  --complement-strong: oklch(0.72 0.11 60);
-  --complement-soft: color-mix(in srgb, var(--complement) 10%, transparent);
-  --on-complement: oklch(0.15 0.01 60);
+  --complement: #b48148;        /* Golden Ochre / Bronze */
+  --complement-strong: #c89254;
+  --complement-soft: color-mix(in srgb, #b48148 18%, transparent);
+  --on-complement: #232323;
 
-  --ring: color-mix(in srgb, var(--accent) 50%, transparent);
+  --terracotta: #7e5026;        /* Deep Burnt Amber / Terracotta */
+  --terracotta-soft: color-mix(in srgb, #7e5026 20%, transparent);
+
+  --ring: color-mix(in srgb, #5a6237 60%, transparent);
 
   /* ============ STATUS ============ */
-  --success: oklch(0.62 0.09 155);
-  --warning: oklch(0.72 0.09 82);
-  --danger: oklch(0.62 0.12 22);
-  --danger-soft: color-mix(in srgb, var(--danger) 14%, transparent);
+  --success: #5a6237;
+  --warning: #b48148;
+  --danger: #9e4235;
+  --danger-soft: color-mix(in srgb, #9e4235 18%, transparent);
 
   /* ============ TYPE — 1.333x scale ============ */
   --font-display: 'Outfit', system-ui, sans-serif;
@@ -184,10 +187,11 @@
   --container: 1600px;
 
   --grain-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='4' seed='42' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23n)'/%3E%3C/svg%3E");
-  --grain-opacity: 0.025;
+  --grain-opacity: 0.05;
   --grain-blend: overlay;
 
-  --plus-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M14 8v12M8 14h12' fill='none' stroke='%23c8d0e0' stroke-opacity='0.04' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
+  --dot-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='1.2' fill='%23d3d5d0' fill-opacity='0.12'/%3E%3C/svg%3E");
+  --plus-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M14 9v10M9 14h10' fill='none' stroke='%23d3d5d0' stroke-opacity='0.09' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
   --plus-size: 28px;
 }
 
@@ -197,18 +201,18 @@
 [data-theme='light'] {
   color-scheme: light;
 
-  --n-50: oklch(1 0 0);
-  --n-100: oklch(0.9852 0.0069 124.45);
-  --n-200: oklch(0.9705 0.0057 128.53);
-  --n-300: oklch(0.9412 0.0054 117.93);
-  --n-400: oklch(0.8959 0.0042 121.57);
-  --n-500: oklch(0.8366 0.0047 134.85);
-  --n-600: oklch(0.7579 0.0048 134.86);
-  --n-700: oklch(0.6618 0.0031 128.51);
-  --n-800: oklch(0.5483 0.0015 106.45);
-  --n-900: oklch(0.4236 0.0016 106.47);
-  --n-950: oklch(0.3325 0.0017 106.49);
-  --n-1000: oklch(0.2389 0.0019 106.54);
+  --n-50: oklch(0.995 0.002 270);
+  --n-100: oklch(0.975 0.005 268);
+  --n-200: oklch(0.955 0.004 266);
+  --n-300: oklch(0.925 0.004 264);
+  --n-400: oklch(0.880 0.003 262);
+  --n-500: oklch(0.820 0.004 260);
+  --n-600: oklch(0.740 0.004 258);
+  --n-700: oklch(0.640 0.003 256);
+  --n-800: oklch(0.520 0.002 254);
+  --n-900: oklch(0.380 0.002 252);
+  --n-950: oklch(0.280 0.002 250);
+  --n-1000: oklch(0.200 0.002 248);
 
   --bg: var(--n-50);
   --surface: var(--n-100);
@@ -219,10 +223,11 @@
   --ink: var(--n-900);
   --ink-inverse: var(--n-50);
 
-  --text-secondary: color-mix(in srgb, var(--ink) 70%, transparent);
-  --text-muted: color-mix(in srgb, var(--ink) 50%, transparent);
-  --text-faint: color-mix(in srgb, var(--ink) 18%, transparent);
-  --text-disabled: color-mix(in srgb, var(--ink) 32%, transparent);
+  --text-primary: var(--ink);
+  --text-secondary: color-mix(in srgb, var(--ink) 78%, transparent);
+  --text-muted: color-mix(in srgb, var(--ink) 62%, transparent);
+  --text-faint: color-mix(in srgb, var(--ink) 42%, transparent);
+  --text-disabled: color-mix(in srgb, var(--ink) 38%, transparent);
 
   --line: color-mix(in srgb, var(--ink) 14%, transparent);
   --line-strong: color-mix(in srgb, var(--ink) 26%, transparent);
@@ -235,24 +240,24 @@
   --overlay: color-mix(in srgb, var(--bg) 82%, transparent);
   --glow: color-mix(in srgb, var(--ink) 6%, transparent);
 
-  --accent: oklch(0.45 0.18 265);
-  --accent-strong: oklch(0.40 0.20 265);
+  --accent: oklch(0.38 0.22 275);
+  --accent-strong: oklch(0.32 0.24 275);
   --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
-  --on-accent: oklch(0.98 0.003 265);
+  --on-accent: oklch(0.98 0.003 275);
 
-  --complement: oklch(0.58 0.15 60);
-  --complement-strong: oklch(0.52 0.17 60);
+  --complement: oklch(0.48 0.17 45);
+  --complement-strong: oklch(0.42 0.19 45);
   --complement-soft: color-mix(in srgb, var(--complement) 8%, transparent);
-  --on-complement: oklch(0.15 0.01 60);
+  --on-complement: oklch(0.12 0.02 45);
 
-  --ring: color-mix(in srgb, var(--accent) 40%, transparent);
+  --ring: color-mix(in srgb, var(--accent) 45%, transparent);
 
-  --success: oklch(0.52 0.10 155);
-  --warning: oklch(0.62 0.10 82);
-  --danger: oklch(0.52 0.14 22);
+  --success: oklch(0.42 0.13 155);
+  --warning: oklch(0.52 0.13 75);
+  --danger: oklch(0.42 0.17 18);
   --danger-soft: color-mix(in srgb, var(--danger) 10%, transparent);
 
-  --grain-opacity: 0.018;
+  --grain-opacity: 0.022;
 
-  --plus-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M14 8v12M8 14h12' fill='none' stroke='%231a1e2e' stroke-opacity='0.04' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
+  --plus-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M14 8v12M8 14h12' fill='none' stroke='%23302840' stroke-opacity='0.04' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
 }
