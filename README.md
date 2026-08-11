@@ -1,52 +1,92 @@
 # EyuTaste (Inspired by Robi)
 
-Svelte 5 design system for all Eyuel brand things. Premium monochrome, painted-wall canvas, 24 custom colorways, 12 background texture patterns, sharp Skit technical icons, engineered typography.
+Svelte 5 design system for all Eyuel brand things. Premium indigo velvet & monochrome canvas, 24 custom colorways, 12 background texture patterns, sharp Skit technical icons, engineered typography.
 
-## Architecture
+## System Architecture
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" width="100%" height="auto" style="background:#232323; border-radius:10px; border:1px solid #3c3c3c; font-family:'Lexend', system-ui, sans-serif;">
-  <!-- Header Title -->
-  <text x="40" y="45" fill="#d3d5d0" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" letter-spacing="-0.02em">EyuTaste System Architecture</text>
-  <text x="40" y="68" fill="#888888" font-size="12" font-family="monospace">v5.0 · 24 Themes · 12 Textures · 75 Skit Glyphs · 8pt Grid</text>
-  <line x1="40" y1="85" x2="840" y2="85" stroke="#3c3c3c" stroke-width="1" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%" height="auto" style="background:#181826; border-radius:12px; border:1px solid #323252; font-family:'Lexend', system-ui, sans-serif;">
+  <defs>
+    <!-- Arrowhead Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#7a6cf0" />
+    </marker>
 
-  <!-- Node 1: Entry Shell -->
-  <rect x="40" y="110" width="230" height="90" rx="8" fill="#2a2a2a" stroke="#5a6237" stroke-width="1.5" />
-  <text x="60" y="138" fill="#5a6237" font-family="monospace" font-size="11" font-weight="700">ENTRY / SHELL</text>
-  <text x="60" y="160" fill="#d3d5d0" font-family="'Outfit', sans-serif" font-size="16" font-weight="600">App.svelte</text>
-  <text x="60" y="180" fill="#aaaaaa" font-size="12">eyutaste card + theme toggle</text>
+    <!-- Grid Background Pattern -->
+    <pattern id="diag-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#7a6cf0" stroke-opacity="0.07" stroke-width="1" />
+    </pattern>
+  </defs>
 
-  <!-- Node 2: Tokens Contract -->
-  <rect x="325" y="110" width="230" height="90" rx="8" fill="#2a2a2a" stroke="#b48148" stroke-width="1.5" />
-  <text x="345" y="138" fill="#b48148" font-family="monospace" font-size="11" font-weight="700">THE CONTRACT</text>
-  <text x="345" y="160" fill="#d3d5d0" font-family="'Outfit', sans-serif" font-size="16" font-weight="600">tokens.css</text>
-  <text x="345" y="180" fill="#aaaaaa" font-size="12">24 themes · 12 textures · 8pt grid</text>
+  <!-- Canvas Background -->
+  <rect width="960" height="540" fill="#181826" rx="12" />
+  <rect width="960" height="540" fill="url(#diag-grid)" rx="12" />
 
-  <!-- Node 3: Data Matrix -->
-  <rect x="610" y="110" width="230" height="90" rx="8" fill="#2a2a2a" stroke="#7e5026" stroke-width="1.5" />
-  <text x="630" y="138" fill="#7e5026" font-family="monospace" font-size="11" font-weight="700">DATA MATRIX</text>
-  <text x="630" y="160" fill="#d3d5d0" font-family="'Outfit', sans-serif" font-size="16" font-weight="600">landing.ts</text>
-  <text x="630" y="180" fill="#aaaaaa" font-size="12">24 theme presets &amp; texture metadata</text>
+  <!-- Diagram Header Bar -->
+  <rect x="32" y="32" width="896" height="56" rx="8" fill="#202033" stroke="#323252" stroke-width="1" />
+  <text x="52" y="66" fill="#e0e0f0" font-family="'Outfit', sans-serif" font-size="18" font-weight="700" letter-spacing="-0.02em">EyuTaste System Architecture</text>
+  <rect x="740" y="48" width="168" height="24" rx="12" fill="#7a6cf0" fill-opacity="0.18" stroke="#7a6cf0" stroke-width="1" />
+  <text x="824" y="64" fill="#7a6cf0" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">v5.0 · 24 THEMES</text>
 
-  <!-- Connector Line Top -->
-  <path d="M 270 155 H 325 M 555 155 H 610" stroke="#5a6237" stroke-width="1.5" stroke-dasharray="4,4" />
+  <!-- SECTION 1: MASTER APP SHELL -->
+  <g transform="translate(32, 115)">
+    <rect width="896" height="95" rx="8" fill="#202033" stroke="#7a6cf0" stroke-width="1.5" />
+    <rect x="0" y="0" width="8" height="95" rx="4" fill="#7a6cf0" />
+    <text x="24" y="32" fill="#7a6cf0" font-family="monospace" font-size="11" font-weight="700" letter-spacing="0.08em">APPLICATION SHELL</text>
+    <text x="24" y="56" fill="#e0e0f0" font-family="'Outfit', sans-serif" font-size="17" font-weight="600">App.svelte</text>
+    <text x="24" y="76" fill="#9285f5" font-size="12">Single-Card eyutaste Shell · Skit Sun/Moon-Star Theme Toggle · Blueprint Background</text>
+  </g>
 
-  <!-- Node 4: Primitives -->
-  <rect x="180" y="270" width="240" height="110" rx="8" fill="#2a2a2a" stroke="#3c3c3c" stroke-width="1" />
-  <text x="200" y="298" fill="#d3d5d0" font-family="monospace" font-size="11" font-weight="700">PRIMITIVES / GLYPHS</text>
-  <text x="200" y="322" fill="#d3d5d0" font-family="'Outfit', sans-serif" font-size="16" font-weight="600">Icon.svelte</text>
-  <text x="200" y="344" fill="#aaaaaa" font-size="12">75 Official Skit Technical Glyphs</text>
-  <text x="200" y="362" fill="#888888" font-size="11" font-family="monospace">24×24 grid · 1.5px stroke · square cap</text>
+  <!-- CONNECTOR 1 -->
+  <path d="M 480 210 L 480 240" fill="none" stroke="#7a6cf0" stroke-width="1.5" marker-end="url(#arrow)" />
 
-  <!-- Node 5: UI Library -->
-  <rect x="460" y="270" width="240" height="110" rx="8" fill="#2a2a2a" stroke="#3c3c3c" stroke-width="1" />
-  <text x="480" y="298" fill="#d3d5d0" font-family="monospace" font-size="11" font-weight="700">UI COMPONENT LIBRARY</text>
-  <text x="480" y="322" fill="#d3d5d0" font-family="'Outfit', sans-serif" font-size="16" font-weight="600">src/lib/components/ui/</text>
-  <text x="480" y="344" fill="#aaaaaa" font-size="12">20+ Accessible UI Primitives</text>
-  <text x="480" y="362" fill="#888888" font-size="11" font-family="monospace">Button, Badge, Select, Checkbox, Dialog...</text>
+  <!-- SECTION 2: CONTRACT & DATA LAYER -->
+  <g transform="translate(32, 245)">
+    <!-- Node A: Tokens Contract -->
+    <g transform="translate(0, 0)">
+      <rect width="435" height="110" rx="8" fill="#202033" stroke="#323252" stroke-width="1" />
+      <rect x="0" y="0" width="6" height="110" rx="3" fill="#42b6bd" />
+      <text x="20" y="28" fill="#42b6bd" font-family="monospace" font-size="11" font-weight="700">DESIGN CONTRACT</text>
+      <text x="20" y="50" fill="#e0e0f0" font-family="'Outfit', sans-serif" font-size="16" font-weight="600">src/lib/tokens.css</text>
+      <text x="20" y="70" fill="#a0a0c0" font-size="12">24 Theme Presets (Indigo Velvet, Charcoal, Ochre...)</text>
+      <text x="20" y="88" fill="#7a6cf0" font-family="monospace" font-size="11">12 Texture SVGs · 8pt Grid · 1.333x Type Scale</text>
+    </g>
 
-  <!-- Vertical Connectors -->
-  <path d="M 440 200 V 235 H 300 V 270 M 440 235 H 580 V 270" fill="none" stroke="#5a6237" stroke-width="1.5" />
+    <!-- Node B: Data Metadata -->
+    <g transform="translate(461, 0)">
+      <rect width="435" height="110" rx="8" fill="#202033" stroke="#323252" stroke-width="1" />
+      <rect x="0" y="0" width="6" height="110" rx="3" fill="#b48148" />
+      <text x="20" y="28" fill="#b48148" font-family="monospace" font-size="11" font-weight="700">METADATA MATRIX</text>
+      <text x="20" y="50" fill="#e0e0f0" font-family="'Outfit', sans-serif" font-size="16" font-weight="600">src/lib/data/landing.ts</text>
+      <text x="20" y="70" fill="#a0a0c0" font-size="12">themePresets Array (24 Dark &amp; Light Hex Swatches)</text>
+      <text x="20" y="88" fill="#b48148" font-family="monospace" font-size="11">textureOptions Array (12 Pattern Definitions)</text>
+    </g>
+  </g>
+
+  <!-- CONNECTOR 2 -->
+  <path d="M 249 355 L 249 385 M 678 355 L 678 385" fill="none" stroke="#7a6cf0" stroke-width="1.5" marker-end="url(#arrow)" />
+
+  <!-- SECTION 3: PRIMITIVES & UI COMPONENT ENGINE -->
+  <g transform="translate(32, 390)">
+    <!-- Node C: Skit Technical Glyphs -->
+    <g transform="translate(0, 0)">
+      <rect width="435" height="110" rx="8" fill="#202033" stroke="#323252" stroke-width="1" />
+      <rect x="0" y="0" width="6" height="110" rx="3" fill="#7a6cf0" />
+      <text x="20" y="28" fill="#7a6cf0" font-family="monospace" font-size="11" font-weight="700">TECHNICAL GLYPH PACK</text>
+      <text x="20" y="50" fill="#e0e0f0" font-family="'Outfit', sans-serif" font-size="16" font-weight="600">Icon.svelte</text>
+      <text x="20" y="70" fill="#a0a0c0" font-size="12">75 Official Skit Technical Line Icons</text>
+      <text x="20" y="88" fill="#9285f5" font-family="monospace" font-size="11">24×24 Grid · 1.5px Stroke · Square Caps · Miter Joins</text>
+    </g>
+
+    <!-- Node D: Accessible UI Library -->
+    <g transform="translate(461, 0)">
+      <rect width="435" height="110" rx="8" fill="#202033" stroke="#323252" stroke-width="1" />
+      <rect x="0" y="0" width="6" height="110" rx="3" fill="#7e5026" />
+      <text x="20" y="28" fill="#7e5026" font-family="monospace" font-size="11" font-weight="700">UI COMPONENT LIBRARY</text>
+      <text x="20" y="50" fill="#e0e0f0" font-family="'Outfit', sans-serif" font-size="16" font-weight="600">src/lib/components/ui/</text>
+      <text x="20" y="70" fill="#a0a0c0" font-size="12">20+ Accessible UI Primitives</text>
+      <text x="20" y="88" fill="#a0a0c0" font-family="monospace" font-size="11">Button, Badge, Checkbox, Select, Dialog, Alert...</text>
+    </g>
+  </g>
 </svg>
 
 ## Directory Structure
@@ -71,8 +111,8 @@ src/
 
 - **Tokens are the Contract**: Every color, shadow, space, and texture pattern resolves in `tokens.css`. No inline hex codes.
 - **Skit Technical Icons**: All icons use the unified `Icon.svelte` primitive (24×24 grid, 1.5px stroke weight, square caps, miter joins).
-- **24 Theme Presets**: Base Charcoal (`#232323`), Cyber Olive, Solar Ochre, Terracotta Rust, Emerald Sage, Indigo Velvet, Crimson Obsidian, Monochrome Slate, plus 16 additional complementary colorways.
-- **Golden Ochre Light Mode**: Light theme (`eyu-light` / `light`) uses warm Golden Ochre sand canvas (`#f2ece1` / `#b48148`).
+- **24 Theme Presets**: Base Charcoal (`#232323`), Indigo Velvet (`#181826`), Cyber Olive, Solar Ochre, Terracotta Rust, Emerald Sage, Crimson Obsidian, Monochrome Slate, plus 16 additional complementary colorways.
+- **Paired Dark & Light Modes**: Each theme features its own dedicated dark state and custom-tuned light canvas state (e.g., `indigo-velvet` dark cosmos / `indigo-velvet-light` soft lavender silk).
 - **Composition, Not Inheritance**: Built using Svelte 5 runes (`$state`, `$derived`, `$props`), snippets, and clean state callbacks.
 
 ## Quick Start
