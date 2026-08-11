@@ -2,7 +2,7 @@
   import Icon from '../primitives/Icon.svelte';
 </script>
 
-<footer class="foot">
+<footer class="foot shell">
   <span class="caption">© 2026 EyuTaste</span>
   <span class="caption foot__tag">own taste, own tools</span>
   <span class="foot__links">
@@ -24,6 +24,7 @@
     margin-top: auto;
     border-top: 1px solid var(--line-soft);
     padding-top: var(--space-4);
+    padding-bottom: var(--space-6);
     color: var(--text-muted);
   }
 

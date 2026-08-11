@@ -3,7 +3,7 @@
   import { iconRow } from '../../data/landing';
 </script>
 
-<section id="system" class="bento">
+<section id="system" class="bento shell">
   <p class="caption bento__label">The system</p>
   <h2 class="heading heading-lg bento__head">Four pillars.</h2>
 

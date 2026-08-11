@@ -1,8 +1,7 @@
 <script lang="ts">
-  /* EYUTHEME GLYPH PACK
-     Technical line style: 24×24 grid, stroke = currentColor, square caps,
-     miter joins, consistent 1.5 weight. Geometry honors free sources
-     (Lucide ISC / Feather MIT) restyled to the EyuTaste voice. */
+  /* EYUTHEME / SKIT TECHNICAL GLYPH PACK
+     Authentic Technical Line Style: 24×24 grid, stroke = currentColor, square caps,
+     miter joins, consistent 1.5 weight. */
 
   export type IconName =
     | 'activity'

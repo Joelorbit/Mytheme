@@ -1,164 +1,166 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import Icon from './lib/components/primitives/Icon.svelte';
 
-  let theme = $state<'dark' | 'light'>(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
+  let theme = $state<'dark' | 'light'>('dark');
+
+  onMount(() => {
+    document.documentElement.dataset.theme = 'indigo-velvet';
+  });
 
   function toggleTheme() {
     theme = theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.dataset.theme = theme;
-    localStorage.setItem('theme', theme);
+    document.documentElement.dataset.theme = theme === 'light' ? 'indigo-velvet-light' : 'indigo-velvet';
   }
 </script>
 
 <svelte:head>
-  <title>EyuTaste — Design System</title>
+  <title>eyutaste</title>
+  <meta name="description" content="eyutaste design system" />
 </svelte:head>
 
-<div class="centered-page">
-  <div class="theme-bar">
-    <button class="theme-toggle" onclick={toggleTheme} aria-label="Toggle theme">
-      {#if theme === 'dark'}
-        <Icon name="sun" size={17} />
-      {:else}
-        <Icon name="moon-star" size={17} />
-      {/if}
-    </button>
+<main class="page">
+  <div class="card">
+    <div class="card__brand">
+      <span class="card__glyph">E</span>
+      <h1 class="card__title">eyutaste</h1>
+    </div>
+
+    <p class="card__sub">Taste, tuned.</p>
+
+    <div class="card__actions">
+      <a
+        href="https://github.com/Joelorbit/Mytheme"
+        target="_blank"
+        rel="noreferrer"
+        class="icon-btn"
+        aria-label="GitHub Repository"
+        title="GitHub Repository"
+      >
+        <Icon name="github" size={20} strokeWidth={1.5} />
+      </a>
+
+      <button
+        type="button"
+        class="icon-btn"
+        onclick={toggleTheme}
+        aria-label="Toggle theme"
+        title="Toggle dark / white theme"
+      >
+        {#if theme === 'dark'}
+          <Icon name="sun" size={20} strokeWidth={1.5} />
+        {:else}
+          <Icon name="moon-star" size={20} strokeWidth={1.5} />
+        {/if}
+      </button>
+    </div>
   </div>
-
-  <main class="hero-center">
-    <a
-      class="eyu"
-      href="https://github.com/Joelorbit/Mytheme"
-      target="_blank"
-      rel="noreferrer"
-      aria-label="EyuTaste — Eyu pattern on GitHub"
-    >
-      <span class="eyu__box" aria-hidden="true">
-        <span class="eyu__text">EyuTaste</span>
-      </span>
-      <span class="eyu__link" aria-hidden="true">
-        <Icon name="arrow-up-right" size={14} strokeWidth={1.8} />
-      </span>
-    </a>
-  </main>
-
-  <footer class="foot">
-    <a class="foot__text" href="https://eyuel.me" target="_blank" rel="noreferrer">eyuel.me</a>
-  </footer>
-</div>
+</main>
 
 <style>
-  .centered-page {
+  .page {
     min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    padding: var(--space-4);
+    background-color: var(--bg);
+    color: var(--text-primary);
+    background-image: var(--blueprint-pattern);
+    background-size: 32px 32px;
+    background-repeat: repeat;
+    transition: background-color var(--dur-3) var(--ease-standard), color var(--dur-3) var(--ease-standard);
+  }
+
+  .card {
     display: flex;
     flex-direction: column;
-    padding: var(--space-6);
-    box-sizing: border-box;
-  }
-
-  .theme-bar {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .theme-toggle {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: var(--radius-md);
+    gap: var(--space-4);
+    padding: var(--space-8) var(--space-10);
     background: var(--surface);
-    border: 1px solid var(--line);
-    color: var(--text-primary);
-    cursor: pointer;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-2);
+    text-align: center;
+    max-width: 380px;
+    width: 100%;
     transition: border-color var(--dur-2) var(--ease-standard), background-color var(--dur-2) var(--ease-standard);
   }
 
-  .theme-toggle:hover {
-    background: var(--surface-elevated);
-    border-color: var(--line-strong);
+  .card:hover {
+    border-color: var(--text-primary);
   }
 
-  .hero-center {
-    flex: 1;
+  .card__brand {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: var(--space-3);
   }
 
-  .eyu {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-4);
-    text-decoration: none;
-    color: var(--text-primary);
-    transition: color var(--dur-2) var(--ease-standard);
-  }
-
-  .eyu:hover .eyu__box {
-    border-color: var(--accent);
-  }
-
-  .eyu__box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 88px;
-    padding-inline: var(--space-8);
+  .card__glyph {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
     border: 1px solid var(--line-strong);
-    border-radius: var(--radius-lg);
-    background-color: var(--surface);
-    background-image: var(--plus-pattern);
-    background-size: var(--plus-size) var(--plus-size);
-    background-repeat: repeat;
-    transition: border-color var(--dur-2) var(--ease-standard);
+    border-radius: var(--radius-sm);
+    background: var(--surface-elevated);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--text-primary);
   }
 
-  .eyu__text {
+  .card__title {
+    margin: 0;
     font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 600;
-    font-style: italic;
-    letter-spacing: var(--tracking-heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
     line-height: 1;
   }
 
-  .eyu__link {
-    display: grid;
-    width: 30px;
-    height: 30px;
-    place-items: center;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-pill);
-    background: var(--surface);
-    color: var(--accent);
-    transition: border-color var(--dur-2) var(--ease-standard), color var(--dur-2) var(--ease-standard);
-  }
-
-  .eyu:hover .eyu__link {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  .foot {
-    display: flex;
-    justify-content: center;
-    padding-top: var(--space-4);
-  }
-
-  .foot__text {
+  .card__sub {
     margin: 0;
-    color: var(--text-faint);
-    font-family: var(--font-mono);
-    font-size: var(--mono-xs);
-    letter-spacing: var(--tracking-caption);
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: color var(--dur-2) var(--ease-standard);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-muted);
   }
 
-  .foot__text:hover {
-    color: var(--accent);
+  .card__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  .icon-btn {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-md);
+    background: var(--surface-elevated);
+    color: var(--text-primary);
+    cursor: pointer;
+    text-decoration: none;
+    transition:
+      border-color var(--dur-2) var(--ease-standard),
+      color var(--dur-2) var(--ease-standard),
+      transform var(--dur-1) var(--ease-standard),
+      background-color var(--dur-2) var(--ease-standard);
+  }
+
+  .icon-btn:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+
+  .icon-btn:active {
+    transform: translateY(0);
   }
 </style>

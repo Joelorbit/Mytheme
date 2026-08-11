@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Icon from '../primitives/Icon.svelte';
+
   let {
     label,
     checked = $bindable(false),
@@ -30,15 +32,9 @@
       onchange={handleChange}
       class="checkbox-input"
     />
-    <svg class="checkbox-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M3.5 7L5.83333 9.33333L10.5 4.66667"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
+    <div class="checkbox-icon">
+      <Icon name="check" size={12} strokeWidth={2.4} />
+    </div>
   </div>
   <span class="checkbox-label body-sm">{label}</span>
 </label>

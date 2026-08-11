@@ -4,22 +4,21 @@
   import { iconRow, ramp } from '../../data/landing';
 </script>
 
-<section class="hero">
+<section class="hero shell">
   <div class="hero__body">
-    <p class="caption hero__eyebrow">EyuTaste — design system · v4.0</p>
+    <p class="caption hero__eyebrow">EyuTaste — Design System</p>
     <h1 class="display hero__title">
       Taste,<br />
       <em class="display--emphasis">tuned.</em>
     </h1>
     <p class="body-lg hero__sub">
-      Futuristic dark green-slate palette, glowing cream & emerald energy, constant digital grain texture.
-      Engineered for high performance.
+      Tactile painted-wall canvas, fine digital noise grain, official Skit technical line icons, engineered type.
     </p>
     <div class="hero__cta">
-      <Button href="#styleguide" size="lg">Design Patterns</Button>
+      <Button href="#components" size="lg">Explore Components</Button>
       <Button href="https://github.com/Joelorbit/Mytheme" target="_blank" external variant="secondary" size="lg">GitHub</Button>
     </div>
-    <p class="mono-xs hero__meta">oklch contract · 8pt grid · 1.333x scale</p>
+    <p class="mono-xs hero__meta">Eyu palette · Skit glyph pack · 8pt grid · fine digital noise</p>
   </div>
 
   <div class="specimen" aria-hidden="true">

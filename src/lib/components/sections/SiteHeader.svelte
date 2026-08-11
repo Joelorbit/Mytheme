@@ -1,7 +1,9 @@
 <script lang="ts">
   import Icon from '../primitives/Icon.svelte';
 
-  let theme = $state<'dark' | 'light'>(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
+  let theme = $state<'dark' | 'light'>(
+    typeof document !== 'undefined' && document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
+  );
 
   function toggleTheme() {
     theme = theme === 'dark' ? 'light' : 'dark';
@@ -15,9 +17,13 @@
     <span class="head__glyph">E</span>
     <span class="caption head__word">EyuTaste</span>
   </a>
+
   <nav class="head__nav" aria-label="Primary">
-    <a class="caption head__link" href="#styleguide">Design Patterns</a>
+    <a class="caption head__link" href="#system">System</a>
+    <a class="caption head__link" href="#components">Components</a>
+    <a class="caption head__link" href="https://github.com/Joelorbit/Mytheme" target="_blank" rel="noreferrer">GitHub</a>
   </nav>
+
   <button class="theme-toggle" onclick={toggleTheme} aria-label="Toggle theme">
     {#if theme === 'dark'}
       <Icon name="sun" size={17} strokeWidth={1.5} />
@@ -40,32 +46,34 @@
   .head__brand {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: var(--space-3);
     text-decoration: none;
   }
 
   .head__glyph {
     display: grid;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     place-items: center;
-    border: 1px solid var(--line);
+    border: 1px solid var(--line-strong);
     border-radius: var(--radius-sm);
     background: var(--surface);
     font-family: var(--font-display);
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-style: italic;
+    font-weight: 700;
     color: var(--accent);
   }
 
   .head__word {
     color: var(--text-primary);
+    font-weight: 600;
   }
 
   .head__nav {
     display: flex;
     align-items: center;
-    gap: var(--space-5);
+    gap: var(--space-6);
   }
 
   .head__link {
@@ -75,7 +83,7 @@
   }
 
   .head__link:hover {
-    color: var(--text-primary);
+    color: var(--accent);
   }
 
   .theme-toggle {
@@ -95,8 +103,8 @@
   }
 
   .theme-toggle:hover {
-    border-color: var(--line-strong);
-    color: var(--text-primary);
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   .theme-toggle:active {

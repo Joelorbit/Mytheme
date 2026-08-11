@@ -39,7 +39,7 @@
   ];
 </script>
 
-<section id="components" class="showcase">
+<section id="components" class="showcase shell">
   <div class="showcase__header">
     <Badge tone="accent">library</Badge>
     <h2 class="heading heading-lg">Complete Component System</h2>
@@ -135,9 +135,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-8);
-    max-width: var(--container);
-    margin-inline: auto;
-    padding-inline: var(--space-4);
   }
 
   .showcase__header {
