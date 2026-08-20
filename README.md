@@ -44,7 +44,7 @@ The token file preserves the original Eyu identity and aliases, so existing cons
 
 ## Themes
 
-The system preserves the original named presets, including Eyu Charcoal, Cyber Olive, Solar Ochre, Emerald Sage, Terracotta Rust, Indigo Velvet, Crimson Obsidian, Monochrome Slate, Amber Bronze, Copper Oxide, Plum Basalt, Tobacco Leather, Moss Stone, Midnight Navy, Raw Umber, Burnt Sienna, Sage Titanium, Espresso Roast, Dune Khaki, Graphite Violet, Chalcedony Blue, Warm Basalt, Cypress Pine, and Eyu Light.
+The system preserves the original named presets, including Eyu Charcoal, Cyber Olive, Solar Ochre, Emerald Sage, Terracotta Rust, Indigo Velvet, Crimson Obsidian, Monochrome Slate, Amber Bronze, Copper Oxide, Plum Basalt, Tobacco Leather, Moss Stone, Midnight Navy, Raw Umber, Burnt Sienna, Sage Titanium, Espresso Roast, Dune Khaki, Graphite Violet, Chalcedony Blue, Warm Basalt, Cypress Pine, and Eyu Light. Every preset has an explicit companion light canvas in `src/lib/tokens.css`; the dark selector remains the source of truth for its dark expression. The landing cockpit intentionally opens on the Indigo Velvet pair as the reference showcase, while `ThemePicker` exposes the complete catalog.
 
 Use the shared theme controller instead of mutating `document.documentElement.dataset.theme` in feature code:
 
@@ -127,7 +127,7 @@ Mytheme now includes a small Eyu-styled adaptation layer over Bits UI for the in
 
 ## Theme modes
 
-A theme preset and a canvas mode are separate concepts. The preset controls the accent personality, while `data-mode="light"` or `data-mode="dark"` controls the monochrome canvas and contrast hierarchy. This means every named Eyu colorway can be used in both a polished light and a polished dark expression without losing its accent identity. The shared controller persists both values in `eyu-theme` and `eyu-mode`, while still reading the legacy `theme` key for compatibility.
+A theme preset and a canvas mode are separate concepts. The preset controls the accent personality, while `data-mode="light"` or `data-mode="dark"` selects the explicit companion canvas and contrast hierarchy. This means every named Eyu colorway can be used in both a polished light and a polished dark expression without losing its accent identity. The shared controller persists both values in `eyu-theme` and `eyu-mode`, while still reading the legacy `theme` key for compatibility.
 
 ```ts
 import { applyTheme, readStoredMode, readStoredTheme } from '$lib/theme';

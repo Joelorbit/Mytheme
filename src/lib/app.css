@@ -342,3 +342,65 @@ ol {
   body { background: #fff; color: #000; }
   a { color: #000; text-decoration: underline; }
 }
+
+
+/* ---------- Eyu Bits UI portal interactions ----------
+   Bits UI renders these surfaces through a portal outside component scope.
+   Keep these selectors global here so Svelte does not warn about global-only
+   style blocks inside the wrapper components. */
+.eyu-menu__trigger {
+  display: inline-grid;
+  width: var(--control-icon);
+  height: var(--control-icon);
+  place-items: center;
+  border: 1px solid var(--outline);
+  border-radius: var(--radius-md);
+  background: var(--surface-default);
+  color: var(--content-primary);
+  cursor: pointer;
+}
+
+.eyu-menu__trigger:hover { background: var(--surface-hover-role); border-color: var(--outline-strong); }
+.eyu-menu__trigger:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+.eyu-menu__content { z-index: var(--z-overlay); min-width: 12rem; padding: var(--space-1); border: 1px solid var(--outline); border-radius: var(--radius-md); background: var(--surface-highest); color: var(--content-primary); box-shadow: var(--shadow-3); }
+.eyu-menu__item { display: flex; min-height: var(--control-md); align-items: center; padding: 0 var(--space-3); border-radius: var(--radius-sm); color: var(--content-secondary); font-size: var(--body-sm); cursor: pointer; outline: none; }
+.eyu-menu__item:hover,
+.eyu-menu__item[data-highlighted] { background: var(--primary-container); color: var(--on-primary-container); }
+.eyu-menu__item--danger { color: var(--status-danger); }
+.eyu-menu__item[data-disabled] { opacity: var(--opacity-disabled); cursor: not-allowed; }
+
+.eyu-popover__trigger { display: inline-flex; align-items: center; }
+.eyu-popover__content { z-index: var(--z-overlay); min-width: 16rem; max-width: min(90vw, 30rem); padding: var(--space-5); border: 1px solid var(--outline); border-radius: var(--radius-lg); background: var(--surface-highest); color: var(--content-primary); box-shadow: var(--shadow-3); animation: euy-popover-in var(--dur-2) var(--ease-emphasis); }
+.eyu-popover__content:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+
+@keyframes euy-popover-in {
+  from { opacity: 0; transform: translateY(-4px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.eyu-sheet__overlay { position: fixed; inset: 0; z-index: var(--z-overlay); background: var(--scrim); backdrop-filter: blur(4px); }
+.eyu-sheet { position: fixed; z-index: calc(var(--z-overlay) + 1); display: flex; flex-direction: column; border: 1px solid var(--outline); background: var(--surface-highest); color: var(--content-primary); box-shadow: var(--shadow-3); outline: none; }
+.euy-sheet--right { inset: 0 0 0 auto; width: min(92vw, 28rem); border-width: 0 0 0 1px; }
+.euy-sheet--left { inset: 0 auto 0 0; width: min(92vw, 28rem); border-width: 0 1px 0 0; }
+.euy-sheet--top { inset: 0 0 auto; max-height: 88dvh; border-width: 0 0 1px; }
+.euy-sheet--bottom { inset: auto 0 0; max-height: 88dvh; border-width: 1px 0 0; }
+.eyu-sheet__head,
+.eyu-sheet__footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-5); border-bottom: 1px solid var(--outline-variant); }
+.eyu-sheet__footer { border-top: 1px solid var(--outline-variant); border-bottom: 0; justify-content: flex-end; }
+.eyu-sheet__title { margin: 0; }
+.eyu-sheet__body { flex: 1; overflow-y: auto; padding: var(--space-5); }
+.eyu-sheet__close { display: grid; width: var(--control-md); height: var(--control-md); place-items: center; border: 1px solid var(--outline); border-radius: var(--radius-md); background: transparent; color: var(--content-secondary); cursor: pointer; }
+.eyu-sheet__close:hover { background: var(--surface-hover-role); color: var(--content-primary); }
+.eyu-sheet__close:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+
+.eyu-combobox { display: flex; flex-direction: column; gap: var(--space-2); }
+.eyu-combobox__label { color: var(--content-secondary); }
+.eyu-combobox__control { position: relative; display: flex; align-items: center; }
+.eyu-combobox__input { width: 100%; min-height: var(--control-md); padding: 0 var(--space-8) 0 var(--space-3); border: 1px solid var(--outline); border-radius: var(--radius-md); background: var(--surface-default); color: var(--content-primary); outline: none; }
+.eyu-combobox__input:focus { border-color: var(--outline-focus); box-shadow: var(--shadow-focus); }
+.eyu-combobox__trigger { position: absolute; right: var(--space-2); display: grid; width: var(--control-sm); height: var(--control-sm); place-items: center; border: 0; background: transparent; color: var(--content-muted); cursor: pointer; }
+.eyu-combobox__content { z-index: var(--z-overlay); width: var(--bits-select-anchor-width); max-height: 16rem; overflow-y: auto; padding: var(--space-1); border: 1px solid var(--outline); border-radius: var(--radius-md); background: var(--surface-highest); box-shadow: var(--shadow-3); }
+.eyu-combobox__item { display: flex; min-height: var(--control-md); align-items: center; padding: 0 var(--space-3); border-radius: var(--radius-sm); color: var(--content-secondary); cursor: pointer; outline: none; }
+.eyu-combobox__item:hover,
+.eyu-combobox__item[data-highlighted] { background: var(--primary-container); color: var(--on-primary-container); }
+.eyu-combobox__item[data-selected] { color: var(--primary); font-weight: 650; }
