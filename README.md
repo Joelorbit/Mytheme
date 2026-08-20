@@ -44,7 +44,7 @@ The token file preserves the original Eyu identity and aliases, so existing cons
 
 ## Themes
 
-The system preserves the original named presets, including Eyu Charcoal, Cyber Olive, Solar Ochre, Emerald Sage, Terracotta Rust, Indigo Velvet, Crimson Obsidian, Monochrome Slate, Amber Bronze, Copper Oxide, Plum Basalt, Tobacco Leather, Moss Stone, Midnight Navy, Raw Umber, Burnt Sienna, Sage Titanium, Espresso Roast, Dune Khaki, Graphite Violet, Chalcedony Blue, Warm Basalt, Cypress Pine, and Eyu Light. Every preset has an explicit companion light canvas in `src/lib/tokens.css`; the dark selector remains the source of truth for its dark expression. The landing cockpit intentionally opens on the Indigo Velvet pair as the reference showcase, while `ThemePicker` exposes the complete catalog.
+The system preserves the original named presets, including Eyu Charcoal, Cyber Olive, Solar Ochre, Emerald Sage, Terracotta Rust, Indigo Velvet, Crimson Obsidian, Monochrome Slate, Amber Bronze, Copper Oxide, Plum Basalt, Tobacco Leather, Moss Stone, Midnight Navy, Raw Umber, Burnt Sienna, Sage Titanium, Espresso Roast, Dune Khaki, Graphite Violet, Chalcedony Blue, Warm Basalt, Cypress Pine, and Eyu Light. Every preset has an explicit companion light canvas in `src/lib/tokens.css`; the dark selector remains the source of truth for its dark expression. The landing cockpit intentionally opens on the curated Indigo Velvet pair, while the complete catalog remains available through the exported `ThemePicker` component and theme controller for consuming applications.
 
 Use the shared theme controller instead of mutating `document.documentElement.dataset.theme` in feature code:
 
@@ -55,7 +55,7 @@ applyTheme('indigo-velvet');
 const next = toggleMode('indigo-velvet');
 ```
 
-Use `<ThemeToggle />` for binary mode switching and `<ThemePicker />` when users need the complete preset catalog. Both persist safely in the browser and remain inert during server-side rendering.
+Use `<ThemeToggle />` for binary mode switching. The landing cockpit uses only this control for the curated Indigo Velvet pair; use the exported `<ThemePicker />` or `applyTheme()` from an application surface when a product needs to expose the other presets. Both persist safely in the browser and remain inert during server-side rendering.
 
 ## Component inventory
 

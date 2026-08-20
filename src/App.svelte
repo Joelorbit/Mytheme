@@ -15,7 +15,6 @@
     StatusDot,
     Surface,
     Sheet,
-    ThemePicker,
     ThemeToggle,
   } from './lib/components/ui/index';
   import { semanticTokenGroups } from './lib/data/tokens';
@@ -31,9 +30,6 @@
     applyTheme(activeTheme, false, activeMode);
   });
 
-  function handleTheme(themeId: ThemeId) {
-    activeTheme = themeId;
-  }
 </script>
 
 <svelte:head>
@@ -57,8 +53,7 @@
           <a href="https://github.com/Joelorbit/Mytheme" target="_blank" rel="noreferrer">GitHub</a>
         </nav>
         <Cluster gap="sm">
-          <ThemePicker value={activeTheme} onchange={handleTheme} />
-          <ThemeToggle position="relative" onchange={handleTheme} onmodechange={(mode) => activeMode = mode} />
+          <ThemeToggle themeId={DEFAULT_THEME} position="relative" onmodechange={(mode) => activeMode = mode} />
         </Cluster>
       </div>
     </Container>
