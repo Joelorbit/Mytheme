@@ -18,16 +18,17 @@
     ThemeToggle,
   } from './lib/components/ui/index';
   import { semanticTokenGroups } from './lib/data/tokens';
-  import { applyTheme, DEFAULT_THEME, readStoredMode, readStoredTheme, type ThemeId, type ThemeMode } from './lib/theme';
+  import { applyTheme, readStoredMode, type ThemeId, type ThemeMode } from './lib/theme';
 
-  let activeTheme = $state<ThemeId>(DEFAULT_THEME);
+  const CURATED_THEME: ThemeId = 'cyber-olive';
+  let activeTheme = $state<ThemeId>(CURATED_THEME);
   let activeMode = $state<ThemeMode>('dark');
   let panelOpen = $state(false);
 
   onMount(() => {
-    activeTheme = readStoredTheme(DEFAULT_THEME);
+    activeTheme = CURATED_THEME;
     activeMode = readStoredMode('dark');
-    applyTheme(activeTheme, false, activeMode);
+    applyTheme(CURATED_THEME, false, activeMode);
   });
 
 </script>
@@ -53,14 +54,14 @@
           <a href="https://github.com/Joelorbit/Mytheme" target="_blank" rel="noreferrer">GitHub</a>
         </nav>
         <Cluster gap="sm">
-          <ThemeToggle themeId={DEFAULT_THEME} position="relative" onmodechange={(mode) => activeMode = mode} />
+          <ThemeToggle themeId={CURATED_THEME} respectStoredTheme={false} position="relative" onmodechange={(mode) => activeMode = mode} />
         </Cluster>
       </div>
     </Container>
   </header>
 
   <main id="main-content">
-    <section class="hero pattern-overlay" style="--pattern-image: var(--blueprint-pattern); --pattern-size: 32px;">
+    <section class="hero pattern-overlay" style="--pattern-image: var(--circuit-pattern); --pattern-size: 40px;">
       <Container>
         <div class="hero__grid">
           <div class="hero__content">

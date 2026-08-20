@@ -7,12 +7,14 @@
     subtle = false,
     position = 'fixed',
     themeId = DEFAULT_THEME,
+    respectStoredTheme = true,
     onchange,
     onmodechange,
   }: {
     subtle?: boolean;
     position?: 'fixed' | 'relative';
     themeId?: ThemeId;
+    respectStoredTheme?: boolean;
     onchange?: (themeId: ThemeId) => void;
     onmodechange?: (mode: ThemeMode) => void;
   } = $props();
@@ -21,7 +23,7 @@
   let currentMode = $state<ThemeMode>('dark');
 
   onMount(() => {
-    currentTheme = readStoredTheme(themeId);
+    currentTheme = respectStoredTheme ? readStoredTheme(themeId) : themeId;
     currentMode = readStoredMode('dark');
     applyTheme(currentTheme, false, currentMode);
   });
