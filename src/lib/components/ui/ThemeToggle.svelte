@@ -1,25 +1,29 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import Icon from '../primitives/Icon.svelte';
-  import { applyTheme, DEFAULT_THEME, readStoredTheme, toggleMode, type ThemeId } from '../../theme';
+  import { applyTheme, DEFAULT_THEME, readStoredMode, readStoredTheme, toggleColorMode, type ThemeId, type ThemeMode } from '../../theme';
 
   let {
     subtle = false,
     position = 'fixed',
     themeId = DEFAULT_THEME,
     onchange,
+    onmodechange,
   }: {
     subtle?: boolean;
     position?: 'fixed' | 'relative';
     themeId?: ThemeId;
     onchange?: (themeId: ThemeId) => void;
+    onmodechange?: (mode: ThemeMode) => void;
   } = $props();
 
   let currentTheme = $state<ThemeId>(DEFAULT_THEME);
+  let currentMode = $state<ThemeMode>('dark');
 
   onMount(() => {
     currentTheme = readStoredTheme(themeId);
-    applyTheme(currentTheme, false);
+    currentMode = readStoredMode('dark');
+    applyTheme(currentTheme, false, currentMode);
   });
 
   $effect(() => {
@@ -27,12 +31,13 @@
   });
 
   function toggle() {
-    currentTheme = toggleMode(currentTheme);
-    applyTheme(currentTheme);
+    currentMode = toggleColorMode(currentMode);
+    applyTheme(currentTheme, true, currentMode);
     onchange?.(currentTheme);
+    onmodechange?.(currentMode);
   }
 
-  const isLight = $derived(currentTheme.includes('light') || currentTheme === 'light');
+  const isLight = $derived(currentMode === 'light');
 </script>
 
 <button

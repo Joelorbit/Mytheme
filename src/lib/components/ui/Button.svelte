@@ -30,7 +30,7 @@
     type?: 'button' | 'submit';
     onClick?: (event: MouseEvent) => void;
     onclick?: (event: MouseEvent) => void;
-    children: Snippet;
+    children?: Snippet;
   } = $props();
 
   const busy = $derived(loading || disabled);
@@ -47,7 +47,7 @@
     href={busy ? undefined : href}
   >
     {#if loading}<span class="btn__spinner" aria-hidden="true"></span>{/if}
-    <span class="btn__label">{@render children()}</span>
+    <span class="btn__label">{@render children?.()}</span>
     {#if external}<Icon name="arrow-up-right" size={arrowSize[size]} strokeWidth={1.8} />{/if}
   </a>
 {:else}
@@ -59,7 +59,7 @@
     aria-busy={loading}
   >
     {#if loading}<span class="btn__spinner" aria-hidden="true"></span>{/if}
-    <span class="btn__label">{@render children()}</span>
+    <span class="btn__label">{@render children?.()}</span>
   </button>
 {/if}
 

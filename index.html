@@ -14,10 +14,14 @@
     <script>
       (() => {
         const stored = localStorage.getItem('eyu-theme') || localStorage.getItem('theme');
-        const fallback = window.matchMedia('(prefers-color-scheme: light)').matches ? 'eyu-light' : 'indigo-velvet';
-        const theme = stored === 'light' ? 'eyu-light' : stored === 'dark' ? 'indigo-velvet' : stored || fallback;
+        const savedMode = localStorage.getItem('eyu-mode');
+        const systemMode = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        const fallback = 'indigo-velvet';
+        const theme = stored === 'light' ? 'eyu-light' : stored === 'dark' ? fallback : stored || fallback;
+        const mode = savedMode === 'light' || savedMode === 'dark' ? savedMode : stored === 'light' || stored === 'dark' ? stored : systemMode;
         document.documentElement.dataset.theme = theme;
-        document.documentElement.style.colorScheme = theme.includes('light') ? 'light' : 'dark';
+        document.documentElement.dataset.mode = mode;
+        document.documentElement.style.colorScheme = mode;
       })();
     </script>
     <link rel="stylesheet" href="/src/lib/tokens.css" />

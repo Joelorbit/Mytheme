@@ -110,3 +110,19 @@ docs/
 ├── audit-notes.md                      # expansion audit and research sources
 └── system-expansion-plan.md            # architecture and compatibility decisions
 ```
+
+## Advanced interaction layer
+
+Mytheme now includes a small Eyu-styled adaptation layer over Bits UI for the interactions that benefit most from headless state and focus management: `DropdownMenu`, `Popover`, `Sheet`, and `Combobox`. These wrappers keep the interaction behavior composable while applying Eyu semantic surfaces, outlines, focus rings, radius, spacing, shadows, motion, and status roles. Use the wrappers from `src/lib/components/ui/index.ts`; do not copy generic shadcn/Tailwind class strings into product code.
+
+## Theme modes
+
+A theme preset and a canvas mode are separate concepts. The preset controls the accent personality, while `data-mode="light"` or `data-mode="dark"` controls the monochrome canvas and contrast hierarchy. This means every named Eyu colorway can be used in both a polished light and a polished dark expression without losing its accent identity. The shared controller persists both values in `eyu-theme` and `eyu-mode`, while still reading the legacy `theme` key for compatibility.
+
+```ts
+import { applyTheme, readStoredMode, readStoredTheme } from '$lib/theme';
+
+const theme = readStoredTheme('indigo-velvet');
+const mode = readStoredMode('dark');
+applyTheme(theme, true, mode);
+```

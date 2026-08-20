@@ -916,3 +916,86 @@
   --dur-2: 1ms;
   --dur-3: 1ms;
 }
+
+
+/* ============================================================================
+   UNIVERSAL MODE OVERLAY
+   ---------------------------------------------------------------------------
+   `data-theme` chooses the accent personality. `data-mode` chooses the canvas.
+   Every named colorway therefore has a coherent dark and light expression.
+   ============================================================================ */
+:root[data-mode='light'] {
+  color-scheme: light;
+
+  --bg: #f2efe8;
+  --surface: #faf9f6;
+  --surface-elevated: #ffffff;
+  --surface-raised: #ffffff;
+  --surface-pressed: #e4e0d8;
+  --surface-inset: #e7e3db;
+
+  --ink: #1c1b18;
+  --ink-inverse: #ffffff;
+  --text-primary: #1c1b18;
+  --text-secondary: #4c4a45;
+  --text-muted: #6d6a62;
+  --text-faint: #8b877e;
+  --text-disabled: #aaa59c;
+
+  --line: rgba(28, 27, 24, 0.17);
+  --line-strong: rgba(28, 27, 24, 0.32);
+  --line-soft: rgba(28, 27, 24, 0.09);
+  --card-border: rgba(28, 27, 24, 0.13);
+
+  --surface-hover: rgba(28, 27, 24, 0.055);
+  --surface-active: rgba(28, 27, 24, 0.11);
+  --disabled-bg: rgba(28, 27, 24, 0.07);
+  --overlay: rgba(20, 19, 17, 0.48);
+  --glow: rgba(28, 27, 24, 0.1);
+
+  --on-accent: #ffffff;
+  --on-complement: #1c1b18;
+  --accent-soft: color-mix(in srgb, var(--accent) 16%, transparent);
+  --complement-soft: color-mix(in srgb, var(--complement) 14%, transparent);
+  --terracotta-soft: color-mix(in srgb, var(--terracotta) 14%, transparent);
+  --danger-soft: color-mix(in srgb, var(--danger) 12%, transparent);
+  --ring: color-mix(in srgb, var(--accent) 78%, #1c1b18);
+
+  --status-info: #25658e;
+  --status-success: #2e765b;
+  --status-warning: #8b5a23;
+  --status-danger: #a83e2b;
+
+  --shadow-1: 0 1px 2px rgba(28, 27, 24, 0.08), 0 4px 14px rgba(28, 27, 24, 0.06);
+  --shadow-2: 0 4px 16px rgba(28, 27, 24, 0.1), 0 14px 34px rgba(28, 27, 24, 0.08);
+  --shadow-3: 0 10px 28px rgba(28, 27, 24, 0.12), 0 28px 72px rgba(28, 27, 24, 0.1);
+}
+
+/* Legacy light preset stays compatible while inheriting the universal light canvas. */
+:root[data-mode='dark'][data-theme='eyu-light'] {
+  color-scheme: dark;
+  --bg: #20201f;
+  --surface: #292927;
+  --surface-elevated: #333330;
+  --surface-raised: #3d3d38;
+  --surface-pressed: #161615;
+  --surface-inset: #161615;
+  --ink: #e4e4dc;
+  --ink-inverse: #20201f;
+  --text-primary: #e4e4dc;
+  --text-secondary: #b8b8ae;
+  --text-muted: #96968b;
+  --text-faint: #6f6f66;
+  --text-disabled: #5b5b54;
+  --line: rgba(228, 228, 220, 0.17);
+  --line-strong: rgba(228, 228, 220, 0.32);
+  --line-soft: rgba(228, 228, 220, 0.09);
+  --card-border: rgba(228, 228, 220, 0.13);
+  --surface-hover: rgba(228, 228, 220, 0.06);
+  --surface-active: rgba(228, 228, 220, 0.11);
+  --disabled-bg: rgba(228, 228, 220, 0.07);
+  --overlay: rgba(8, 8, 8, 0.72);
+  --glow: rgba(228, 228, 220, 0.08);
+  --on-accent: #ffffff;
+  --accent-soft: color-mix(in srgb, var(--accent) 22%, transparent);
+}

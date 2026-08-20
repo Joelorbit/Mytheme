@@ -6,22 +6,29 @@
     Button,
     Card,
     Cluster,
+    Combobox,
+    DropdownMenu,
+    Popover,
     Container,
     Input,
     Select,
     StatusDot,
     Surface,
+    Sheet,
     ThemePicker,
     ThemeToggle,
   } from './lib/components/ui/index';
   import { semanticTokenGroups } from './lib/data/tokens';
-  import { applyTheme, DEFAULT_THEME, readStoredTheme, type ThemeId } from './lib/theme';
+  import { applyTheme, DEFAULT_THEME, readStoredMode, readStoredTheme, type ThemeId, type ThemeMode } from './lib/theme';
 
   let activeTheme = $state<ThemeId>(DEFAULT_THEME);
+  let activeMode = $state<ThemeMode>('dark');
+  let panelOpen = $state(false);
 
   onMount(() => {
     activeTheme = readStoredTheme(DEFAULT_THEME);
-    applyTheme(activeTheme, false);
+    activeMode = readStoredMode('dark');
+    applyTheme(activeTheme, false, activeMode);
   });
 
   function handleTheme(themeId: ThemeId) {
@@ -51,7 +58,7 @@
         </nav>
         <Cluster gap="sm">
           <ThemePicker value={activeTheme} onchange={handleTheme} />
-          <ThemeToggle position="relative" onchange={handleTheme} />
+          <ThemeToggle position="relative" onchange={handleTheme} onmodechange={(mode) => activeMode = mode} />
         </Cluster>
       </div>
     </Container>
@@ -71,7 +78,7 @@
             </Cluster>
             <Cluster gap="lg" class="hero__status">
               <StatusDot status="success" label="System ready" pulse />
-              <span class="mono-sm hero__theme">{activeTheme}</span>
+              <span class="mono-sm hero__theme">{activeTheme} · {activeMode}</span>
             </Cluster>
           </div>
           <Surface tone="high" padding="lg" class="hero__panel" interactive>
@@ -165,7 +172,23 @@
               <p class="body-sm">Use the foundation tokens, then extend the system when the product earns a new pattern.</p>
             </Surface>
           </Card>
+          <Card title="Advanced interactions" description="Skit/Bits interaction power, restyled as Eyu.">
+            <div class="form-stack">
+              <div class="advanced-row">
+                <DropdownMenu label="Eyu action menu" items={[{ label: 'Duplicate', value: 'duplicate' }, { label: 'Archive', value: 'archive' }, { label: 'Delete', value: 'delete', danger: true }]} />
+                <Popover>
+                  {#snippet trigger()}<Button size="sm" variant="outline">Open popover</Button>{/snippet}
+                  {#snippet children()}<p class="body-sm advanced-copy">Every overlay uses Eyu surfaces, outlines, focus rings, and motion.</p>{/snippet}
+                </Popover>
+                <Button size="sm" variant="secondary" onclick={() => panelOpen = true}>Open sheet</Button>
+              </div>
+              <Combobox options={['Indigo Velvet', 'Cyber Olive', 'Solar Ochre', 'Emerald Sage']} label="Search a colorway" />
+            </div>
+          </Card>
         </div>
+        <Sheet bind:open={panelOpen} title="Eyu utility panel">
+          <p class="body-md advanced-copy">This panel inherits the active colorway and the current {activeMode} canvas mode.</p>
+        </Sheet>
       </Container>
     </section>
   </main>
@@ -220,6 +243,8 @@
   .token-swatch__color { width: 1.1rem; height: 1.1rem; flex: 0 0 auto; border: 1px solid color-mix(in srgb, var(--content-primary) 18%, transparent); border-radius: 50%; }
   .component-grid :global(.card) { min-height: 100%; }
   .form-stack { display: flex; flex-direction: column; gap: var(--space-4); }
+  :global(.advanced-row) { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+  :global(.advanced-copy) { margin: 0; color: var(--content-secondary); }
   :global(.recipe) { display: flex; flex-direction: column; gap: var(--space-3); }
   .recipe__top { display: flex; align-items: center; justify-content: space-between; }
   :global(.recipe h3), :global(.recipe p) { margin: 0; }
