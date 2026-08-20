@@ -4,8 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "node scripts/check-dependencies.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/check-dependencies.mjs",
     "build": "vite build",
+    "precheck": "node scripts/check-dependencies.mjs",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "preview": "vite preview"
   },

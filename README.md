@@ -12,6 +12,16 @@ npm run dev
 npm run build
 ```
 
+After pulling a commit that changes `package.json` or `package-lock.json`, run `npm install` (or `npm ci`) before starting Vite. The Bits UI wrappers are real package imports, so an existing `node_modules` directory from before the integration will not contain `bits-ui` automatically. The `dev`, `check`, and `build` scripts now run a dependency preflight and report this exact recovery command instead of allowing Vite to fail later with an import-analysis error.
+
+If you already pulled the Bits UI integration and see `Failed to resolve import "bits-ui"`, run:
+
+```bash
+npm install
+npm run check
+npm run dev
+```
+
 The build output is generated in `dist/` and can be deployed as a static site. The starter cockpit in `src/App.svelte` is the living reference for the system.
 
 ## Design-system contract
