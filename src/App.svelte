@@ -20,7 +20,7 @@
   import { semanticTokenGroups } from './lib/data/tokens';
   import { applyTheme, readStoredMode, type ThemeId, type ThemeMode } from './lib/theme';
 
-  const CURATED_THEME: ThemeId = 'solar-ochre';
+  const CURATED_THEME: ThemeId = 'moss-stone';
   let activeTheme = $state<ThemeId>(CURATED_THEME);
   let activeMode = $state<ThemeMode>('dark');
   let panelOpen = $state(false);
@@ -61,7 +61,7 @@
   </header>
 
   <main id="main-content">
-    <section class="hero pattern-overlay" style="--pattern-image: var(--topo-pattern); --pattern-size: 40px;">
+    <section class="hero pattern-overlay" style="--pattern-image: var(--circuit-pattern); --pattern-size: 40px;">
       <Container>
         <div class="hero__grid">
           <div class="hero__content">
