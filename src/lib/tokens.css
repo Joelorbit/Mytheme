@@ -781,3 +781,138 @@
   --blueprint-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M0 32V0h32' fill='none' stroke='%232e251a' stroke-opacity='0.06' stroke-width='1'/%3E%3C/svg%3E");
 }
 
+
+
+/* ============================================================================
+   SEMANTIC ROLE LAYER — stable meaning, theme-swappable values
+   ---------------------------------------------------------------------------
+   Components consume these roles instead of selecting a raw palette value.
+   Keep paired `on-*` roles together whenever a role is used as a fill.
+   ============================================================================ */
+:root {
+  /* Accent role families */
+  --primary: var(--accent);
+  --on-primary: var(--on-accent);
+  --primary-container: var(--accent-soft);
+  --on-primary-container: var(--text-primary);
+  --primary-hover: var(--accent-strong);
+  --primary-active: color-mix(in srgb, var(--accent-strong) 82%, var(--ink-inverse));
+
+  --secondary: var(--complement);
+  --on-secondary: var(--on-complement);
+  --secondary-container: var(--complement-soft);
+  --on-secondary-container: var(--text-primary);
+  --secondary-hover: var(--complement-strong);
+
+  --tertiary: var(--terracotta);
+  --on-tertiary: var(--ink);
+  --tertiary-container: var(--terracotta-soft);
+  --on-tertiary-container: var(--text-primary);
+
+  /* Surface hierarchy */
+  --surface-lowest: var(--surface-inset);
+  --surface-low: var(--bg);
+  --surface-default: var(--surface);
+  --surface-high: var(--surface-elevated);
+  --surface-highest: var(--surface-raised);
+  --surface-overlay: var(--overlay);
+  --surface-hover-role: var(--surface-hover);
+  --surface-pressed-role: var(--surface-active);
+
+  /* Content and outline roles */
+  --content-primary: var(--text-primary);
+  --content-secondary: var(--text-secondary);
+  --content-muted: var(--text-muted);
+  --content-faint: var(--text-faint);
+  --content-disabled: var(--text-disabled);
+  --content-inverse: var(--ink-inverse);
+  --content-link: var(--accent-strong);
+  --content-link-hover: var(--complement-strong);
+  --outline: var(--line);
+  --outline-variant: var(--line-soft);
+  --outline-strong: var(--line-strong);
+  --outline-focus: var(--ring);
+  --outline-danger: var(--danger);
+
+  /* Status role families */
+  --status-info: #4a8bb8;
+  --status-info-container: color-mix(in srgb, var(--status-info) 16%, transparent);
+  --on-status-info: #ffffff;
+  --status-success: #4ea082;
+  --status-success-container: color-mix(in srgb, var(--status-success) 16%, transparent);
+  --on-status-success: #ffffff;
+  --status-warning: #b48148;
+  --status-warning-container: color-mix(in srgb, var(--status-warning) 16%, transparent);
+  --on-status-warning: var(--ink-inverse);
+  --status-danger: #c86341;
+  --status-danger-container: color-mix(in srgb, var(--status-danger) 16%, transparent);
+  --on-status-danger: #ffffff;
+
+  /* Interaction and control roles */
+  --focus-ring: var(--ring);
+  --selection-bg: var(--accent);
+  --selection-fg: var(--on-accent);
+  --control-sm: 2rem;
+  --control-md: 2.75rem;
+  --control-lg: 3rem;
+  --control-icon: 2.75rem;
+  --opacity-disabled: 0.48;
+  --opacity-muted: 0.68;
+  --opacity-overlay: 0.84;
+
+  /* Elevation and overlay roles */
+  --shadow-accent: 0 0 0 1px color-mix(in srgb, var(--accent) 24%, transparent), 0 10px 32px color-mix(in srgb, var(--accent) 18%, transparent);
+  --shadow-focus: 0 0 0 3px color-mix(in srgb, var(--focus-ring) 28%, transparent);
+  --scrim: color-mix(in srgb, var(--bg) 72%, transparent);
+
+  /* Chart/data-visualization roles */
+  --chart-1: var(--accent);
+  --chart-2: var(--complement);
+  --chart-3: var(--terracotta);
+  --chart-4: var(--status-info);
+  --chart-5: var(--status-success);
+  --chart-6: #9b59b6;
+  --chart-7: #d95338;
+  --chart-8: #8b949e;
+
+  /* Layout and text measure */
+  --container-narrow: 42rem;
+  --container-reading: 68ch;
+  --container-wide: var(--container);
+  --measure-prose: 68ch;
+  --measure-form: 30rem;
+}
+
+/* Modern color-role aliases for utility consumers. */
+@theme inline {
+  --color-primary-container: var(--primary-container);
+  --color-primary-foreground: var(--on-primary);
+  --color-secondary-container: var(--secondary-container);
+  --color-secondary-foreground: var(--on-secondary);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-tertiary-foreground: var(--on-tertiary);
+  --color-info: var(--status-info);
+  --color-info-container: var(--status-info-container);
+  --color-success-container: var(--status-success-container);
+  --color-warning-container: var(--status-warning-container);
+  --color-danger-container: var(--status-danger-container);
+  --color-link: var(--content-link);
+}
+
+/* High-contrast and motion preferences are first-class theme overlays. */
+@media (prefers-contrast: more) {
+  :root {
+    --line: color-mix(in srgb, var(--text-primary) 32%, transparent);
+    --line-strong: color-mix(in srgb, var(--text-primary) 56%, transparent);
+    --line-soft: color-mix(in srgb, var(--text-primary) 18%, transparent);
+    --ring: var(--text-primary);
+    --grain-opacity: 0.02;
+  }
+}
+
+[data-motion='reduced'] {
+  --dur-1: 1ms;
+  --dur-2: 1ms;
+  --dur-3: 1ms;
+}

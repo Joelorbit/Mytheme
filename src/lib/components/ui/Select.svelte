@@ -6,9 +6,11 @@
   let {
     label,
     id,
+    hint,
+    error,
     children,
     ...rest
-  }: HTMLSelectAttributes & { label?: string; children?: Snippet } = $props();
+  }: HTMLSelectAttributes & { label?: string; hint?: string; error?: string; children?: Snippet } = $props();
 </script>
 
 <div class="select">
@@ -17,11 +19,14 @@
   {/if}
 
   <span class="select__wrap">
-    <select {id} class="select__control" {...rest}>
+    <select {id} class="select__control" class:select__control--error={!!error} aria-invalid={error ? 'true' : undefined} aria-describedby={error ? (id ? `${id}-error` : undefined) : hint && id ? `${id}-hint` : undefined} {...rest}>
       {#if children}{@render children()}{/if}
     </select>
-    <Icon class="select__chevron" name="chevron-down" size={16} strokeWidth={1.8} aria-hidden="true" />
+    <span class="select__chevron" aria-hidden="true"><Icon name="chevron-down" size={16} strokeWidth={1.8} /></span>
   </span>
+
+  {#if hint && !error}<p class="select__hint body-xs" id={id ? `${id}-hint` : undefined}>{hint}</p>{/if}
+  {#if error}<p class="select__hint select__hint--error body-xs" id={id ? `${id}-error` : undefined} role="alert">{error}</p>{/if}
 </div>
 
 <style>
@@ -42,7 +47,7 @@
 
   .select__control {
     width: 100%;
-    min-height: 40px;
+    min-height: var(--control-md);
     appearance: none;
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
@@ -61,15 +66,21 @@
   }
 
   .select__control:focus {
-    border-color: var(--ring);
-    box-shadow: 0 0 0 3px var(--accent-soft);
+    border-color: var(--outline-focus);
+    box-shadow: var(--shadow-focus);
   }
+
+  .select__control--error,
+  .select__control--error:hover:not(:focus) { border-color: var(--status-danger); }
 
   .select__control:disabled {
     background: var(--disabled-bg);
     color: var(--text-disabled);
     cursor: not-allowed;
   }
+
+  .select__hint { margin: 0; color: var(--content-muted); }
+  .select__hint--error { color: var(--status-danger); }
 
   .select__chevron {
     position: absolute;

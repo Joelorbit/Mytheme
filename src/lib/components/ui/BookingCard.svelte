@@ -37,7 +37,7 @@
     document.body.style.overflow = 'hidden';
   }
 
-  const src = `${calUrl}?embed=true&theme=${theme}`;
+  const src = $derived(`${calUrl}?embed=true&theme=${theme}`);
 
   $effect(() => {
     if (!open) return;
@@ -61,7 +61,7 @@
   </span>
 
   <span class="booking__foot">
-    <span class="booking__alive caption"><i class="booking__dot" aria-hidden="true" />Available</span>
+    <span class="booking__alive caption"><i class="booking__dot" aria-hidden="true"></i>Available</span>
     <span class="booking__cta caption">
       Schedule <Icon name="arrow-up-right" size={15} strokeWidth={1.8} />
     </span>
@@ -69,12 +69,13 @@
 </button>
 
 {#if open}
-  <div class="booking-overlay" onmousedown={close}>
+  <div class="booking-overlay" role="button" tabindex="-1" aria-label="Close booking dialog" onmousedown={close}>
     <div
       class="booking-modal"
       role="dialog"
       aria-modal="true"
       aria-label="Book a call"
+      tabindex="-1"
       onmousedown={(e) => e.stopPropagation()}
     >
       <div class="booking-modal__head">
@@ -86,7 +87,7 @@
         </button>
       </div>
       <div class="booking-modal__body">
-        <iframe title="Book a call" {src} class="booking-modal__frame" />
+        <iframe title="Book a call" {src} class="booking-modal__frame"></iframe>
       </div>
     </div>
   </div>

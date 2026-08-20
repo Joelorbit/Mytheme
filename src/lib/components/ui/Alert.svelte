@@ -24,7 +24,7 @@
   );
 </script>
 
-<div class="alert alert--{type}" role="alert">
+<div class="alert alert--{type}" role={type === 'info' || type === 'success' ? 'status' : 'alert'} aria-live={type === 'danger' || type === 'warning' ? 'assertive' : 'polite'}>
   <div class="alert-icon">
     <Icon name={iconName} size={20} />
   </div>
@@ -39,7 +39,7 @@
   </div>
 
   {#if dismissable}
-    <button class="alert-close" onclick={ondismiss} aria-label="Dismiss alert">
+    <button type="button" class="alert-close" onclick={ondismiss} aria-label="Dismiss alert">
       <Icon name="x" size={16} />
     </button>
   {/if}
@@ -55,10 +55,10 @@
     border-left: 3px solid transparent;
   }
 
-  .alert--info { background: var(--accent-soft); border-left-color: var(--accent); color: var(--accent-strong); }
-  .alert--success { background: color-mix(in srgb, var(--success) 10%, transparent); border-left-color: var(--success); color: var(--success); }
-  .alert--warning { background: color-mix(in srgb, var(--warning) 10%, transparent); border-left-color: var(--warning); color: var(--warning); }
-  .alert--danger { background: var(--danger-soft); border-left-color: var(--danger); color: var(--danger); }
+  .alert--info { background: var(--status-info-container); border-left-color: var(--status-info); color: var(--status-info); }
+  .alert--success { background: var(--status-success-container); border-left-color: var(--status-success); color: var(--status-success); }
+  .alert--warning { background: var(--status-warning-container); border-left-color: var(--status-warning); color: var(--status-warning); }
+  .alert--danger { background: var(--status-danger-container); border-left-color: var(--status-danger); color: var(--status-danger); }
 
   .alert-icon {
     flex-shrink: 0;
@@ -87,11 +87,20 @@
     border: none;
     color: var(--text-muted);
     cursor: pointer;
+    width: var(--control-md);
+    height: var(--control-md);
     padding: 0;
-    transition: color var(--dur-2) var(--ease-standard);
+    border-radius: var(--radius-sm);
+    transition: color var(--dur-2) var(--ease-standard), background var(--dur-2) var(--ease-standard);
   }
 
   .alert-close:hover {
+    background: var(--surface-hover-role);
     color: var(--text-primary);
+  }
+
+  .alert-close:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
   }
 </style>

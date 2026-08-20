@@ -29,10 +29,15 @@
       if (event.key === 'Tab' && panel) trapFocus(event);
     };
     document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
+    panel?.focus();
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      requestAnimationFrame(() => prevFocus?.focus());
+    };
   });
 
   function trapFocus(event: KeyboardEvent) {
+    if (!panel) return;
     const focusables = panel.querySelectorAll<HTMLElement>(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
     );
@@ -61,6 +66,7 @@
       role="dialog"
       aria-modal="true"
       aria-labelledby={title ? titleId : undefined}
+      tabindex="-1"
       onmousedown={(e) => e.stopPropagation()}
     >
       <div class="dialog__head">
@@ -98,7 +104,7 @@
     max-height: calc(100dvh - var(--space-6));
     flex-direction: column;
     overflow: hidden;
-    border: 1px solid var(--card-border);
+    border: 1px solid var(--outline-variant);
     border-radius: var(--radius-lg);
     animation: rise var(--dur-3) var(--ease-emphasis);
   }
@@ -118,12 +124,12 @@
 
   .dialog__close {
     display: flex;
-    width: 32px;
-    height: 32px;
-    flex: 0 0 32px;
+    width: var(--control-md);
+    height: var(--control-md);
+    flex: 0 0 var(--control-md);
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--line);
+    border: 1px solid var(--outline);
     border-radius: var(--radius-md);
     background: transparent;
     color: var(--text-secondary);

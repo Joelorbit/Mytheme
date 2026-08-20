@@ -2,7 +2,7 @@
   import Icon from '../primitives/Icon.svelte';
   import type { Snippet } from 'svelte';
 
-  type Variant = 'primary' | 'secondary' | 'ghost' | 'danger';
+  type Variant = 'primary' | 'secondary' | 'tertiary' | 'outline' | 'ghost' | 'link' | 'danger';
   type Size = 'sm' | 'md' | 'lg' | 'icon';
 
   const arrowSize: Record<Size, number> = { sm: 14, md: 15, lg: 16, icon: 16 };
@@ -17,6 +17,7 @@
     disabled = false,
     type = 'button',
     onClick,
+    onclick,
     children,
   }: {
     variant?: Variant;
@@ -28,6 +29,7 @@
     disabled?: boolean;
     type?: 'button' | 'submit';
     onClick?: (event: MouseEvent) => void;
+    onclick?: (event: MouseEvent) => void;
     children: Snippet;
   } = $props();
 
@@ -37,12 +39,12 @@
 
 {#if href}
   <a
-    {href}
     {target}
     rel={external ? 'noreferrer' : undefined}
     class={cls}
     aria-disabled={busy}
     tabindex={busy ? -1 : undefined}
+    href={busy ? undefined : href}
   >
     {#if loading}<span class="btn__spinner" aria-hidden="true"></span>{/if}
     <span class="btn__label">{@render children()}</span>
@@ -53,7 +55,7 @@
     {type}
     class={cls}
     disabled={busy}
-    onclick={onClick}
+    onclick={onclick ?? onClick}
     aria-busy={loading}
   >
     {#if loading}<span class="btn__spinner" aria-hidden="true"></span>{/if}
@@ -125,6 +127,40 @@
     background: var(--surface-active);
   }
 
+  .btn--tertiary {
+    background: var(--tertiary-container);
+    color: var(--on-tertiary-container);
+  }
+
+  .btn--tertiary:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--tertiary) 28%, var(--surface-default));
+  }
+
+  .btn--outline {
+    border-color: var(--outline);
+    background: transparent;
+    color: var(--content-primary);
+  }
+
+  .btn--outline:hover:not(:disabled) {
+    border-color: var(--outline-strong);
+    background: var(--surface-hover-role);
+  }
+
+  .btn--link {
+    min-height: auto;
+    padding-inline: 0;
+    border-color: transparent;
+    background: transparent;
+    color: var(--content-link);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .btn--link:hover:not(:disabled) {
+    color: var(--content-link-hover);
+  }
+
   .btn--ghost {
     background: transparent;
     color: var(--text-primary);
@@ -154,6 +190,10 @@
     outline-offset: 2px;
   }
 
+  .btn[aria-disabled='true'] {
+    pointer-events: none;
+  }
+
   .btn:disabled {
     background: var(--disabled-bg);
     border-color: transparent;
@@ -167,25 +207,25 @@
 
   /* -------- sizes (8pt rhythm) -------- */
   .btn--sm {
-    min-height: 32px;
+    min-height: var(--control-md);
     padding-inline: var(--space-3);
     font-size: var(--body-xs);
   }
 
   .btn--md {
-    min-height: 40px;
+    min-height: var(--control-md);
     padding-inline: var(--space-4);
   }
 
   .btn--lg {
-    min-height: 48px;
+    min-height: var(--control-lg);
     padding-inline: var(--space-5);
     font-size: var(--body-md);
   }
 
   .btn--icon {
-    width: 40px;
-    height: 40px;
+    width: var(--control-icon);
+    height: var(--control-icon);
     padding: 0;
   }
 

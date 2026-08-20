@@ -320,7 +320,7 @@ export const iconRow = [
   'square-terminal',
   'code',
   'database',
-  'shield-check',
+  'badge-check',
   'cpu',
   'terminal',
   'palette',

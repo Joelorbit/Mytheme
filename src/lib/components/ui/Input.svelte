@@ -6,11 +6,13 @@
     hint,
     error,
     id,
+    value = $bindable(),
     ...rest
   }: HTMLInputAttributes & {
     label?: string;
     hint?: string;
     error?: string;
+    value?: HTMLInputAttributes['value'];
   } = $props();
 </script>
 
@@ -21,19 +23,20 @@
 
   <input
     {id}
+    {value}
     class="field__input"
     class:field__input--error={!!error}
     aria-invalid={error ? 'true' : undefined}
-    aria-describedby={error ? `${id}-error` : undefined}
+    aria-describedby={error ? (id ? `${id}-error` : undefined) : hint && id ? `${id}-hint` : undefined}
     {...rest}
   />
 
   {#if hint && !error}
-    <p class="field__hint body-xs">{hint}</p>
+    <p class="field__hint body-xs" id={id ? `${id}-hint` : undefined}>{hint}</p>
   {/if}
 
   {#if error}
-    <p class="field__hint field__hint--error body-xs" id={`${id}-error`}>{error}</p>
+    <p class="field__hint field__hint--error body-xs" id={id ? `${id}-error` : undefined} role="alert">{error}</p>
   {/if}
 </div>
 
@@ -50,7 +53,7 @@
 
   .field__input {
     width: 100%;
-    min-height: 40px;
+    min-height: var(--control-md);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
     background: var(--surface);
@@ -71,8 +74,8 @@
   }
 
   .field__input:focus {
-    border-color: var(--ring);
-    box-shadow: 0 0 0 3px var(--accent-soft);
+    border-color: var(--outline-focus);
+    box-shadow: var(--shadow-focus);
   }
 
   .field__input--error,

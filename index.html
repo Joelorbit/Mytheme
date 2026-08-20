@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>EyuTaste — Design System</title>
+    <title>EyuTheme — Frontend Boilerplate</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,9 +13,11 @@
     />
     <script>
       (() => {
-        const stored = localStorage.getItem('theme');
-        const theme = stored === 'light' || stored === 'dark' ? stored : 'dark';
+        const stored = localStorage.getItem('eyu-theme') || localStorage.getItem('theme');
+        const fallback = window.matchMedia('(prefers-color-scheme: light)').matches ? 'eyu-light' : 'indigo-velvet';
+        const theme = stored === 'light' ? 'eyu-light' : stored === 'dark' ? 'indigo-velvet' : stored || fallback;
         document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme.includes('light') ? 'light' : 'dark';
       })();
     </script>
     <link rel="stylesheet" href="/src/lib/tokens.css" />

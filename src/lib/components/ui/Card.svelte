@@ -38,9 +38,9 @@
   .card {
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--card-border);
+    border: 1px solid var(--outline-variant);
     border-radius: var(--radius-lg);
-    background: var(--surface);
+    background: var(--surface-default);
     box-shadow: var(--shadow-1);
   }
 
